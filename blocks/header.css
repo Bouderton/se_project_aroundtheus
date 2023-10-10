@@ -1,0 +1,14 @@
+.header {
+  margin: 0;
+  max-width: 100%;
+}
+
+.header__image {
+  margin: 0 0 40px;
+}
+
+.header__line {
+  border-bottom: 1px solid #545454;
+  opacity: 0.7;
+  margin: 0;
+}
