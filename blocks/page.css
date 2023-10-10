@@ -20,3 +20,14 @@
   max-width: 880px;
   padding: 0 15px 0;
 }
+
+@media screen and (max-width: 620px) {
+  .page__content {
+    padding: 0;
+    margin: 28px auto;
+  }
+
+  .content {
+    margin: 0 15px;
+  }
+}
