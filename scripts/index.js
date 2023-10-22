@@ -25,14 +25,37 @@ let initialCards = [
   },
 ];
 
+/* ELEMENTS */
+
 const profileEditBtn = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileCloseBtn = document.querySelector("#profile-close-button");
+const profileTitle = document.querySelector(".profile__title");
+const profileSubtitle = document.querySelector(".profile__subtitle");
+const profileTitleInput = document.querySelector("#profile-title-input");
+const profileSubtitleInput = document.querySelector("#profile-subtitle-input");
+const profileEditForm = profileEditModal.querySelector(".modal__form");
 
+// FUNCTIONS //
+
+function closePopup() {
+  profileEditModal.classList.remove("modal__opened");
+}
+
+function handleProfileEditSubmit(e) {
+  e.preventDefault();
+  profileTitle.textContent = profileTitleInput.value;
+  profileSubtitle.textContent = profileSubtitleInput.value;
+  closePopup();
+}
+
+// EVENTS //
 profileEditBtn.addEventListener("click", () => {
   profileEditModal.classList.add("modal__opened");
+  profileTitleInput.value = profileTitle.textContent;
+  profileSubtitleInput.value = profileSubtitle.textContent;
 });
 
-profileCloseBtn.addEventListener("click", () => {
-  profileEditModal.classList.remove("modal__opened");
-});
+profileCloseBtn.addEventListener("click", closePopup);
+
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
