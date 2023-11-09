@@ -44,8 +44,17 @@ const cardSubmitBtn = addCardForm.querySelector("#card-save-button");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardsWrap = document.querySelector(".cards__list");
+const previewModal = document.querySelector("#preview-modal");
 
 // FUNCTIONS
+
+function openPreviewModal() {
+  previewModal.classList.add("modal_opened");
+}
+
+function openModal(cardData) {
+  cardData.classList.add(".modal_opened");
+}
 
 function closePopup() {
   profileEditModal.classList.remove("modal_opened");
@@ -69,6 +78,21 @@ function getCardElement(cardData) {
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name + "Photo";
+  const modalPreviewCaption = document.querySelector(".modal__preview_caption");
+  modalPreviewCaption.textContent = cardData.name;
+  const likeBtns = document.querySelectorAll(".card__like-button");
+  likeBtns.forEach((likeBtn) => {
+    likeBtn.addEventListener("click", () => {
+      likeBtn.classList.toggle("card__like-button_active");
+    });
+  });
+
+  const cardTrashBtns = document.querySelectorAll(".card__trash-button");
+  cardTrashBtns.forEach((cardTrashBtn) => {
+    cardTrashBtn.addEventListener("click", (e) => {
+      e.target.closest(".card").remove();
+    });
+  });
   return cardElement;
 }
 
@@ -109,16 +133,9 @@ addCardCloseBtn.addEventListener("click", closeCardPopup);
 
 addCardForm.addEventListener("submit", handleCardSubmit);
 
-const likeBtns = document.querySelectorAll(".card__like-button");
-likeBtns.forEach((likeBtn) => {
-  likeBtn.addEventListener("click", () => {
-    likeBtn.classList.toggle("card__like-button_active");
-  });
-});
-
-const cardTrashBtns = document.querySelectorAll(".card__trash-button");
-cardTrashBtns.forEach((cardTrashBtn) => {
-  cardTrashBtn.addEventListener("click", (e) => {
-    e.target.closest(".card").remove();
+const cardImages = document.querySelectorAll(".card__image");
+cardImages.forEach((cardImage) => {
+  cardImage.addEventListener("click", () => {
+    openPreviewModal();
   });
 });
