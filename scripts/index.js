@@ -75,6 +75,8 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__description-text");
+  const modalImage = previewModal.querySelector(".card__image");
+
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name + "Photo";
@@ -90,7 +92,8 @@ function getCardElement(cardData) {
   });
 
   cardImageEl.addEventListener("click", () => {
-    openPreviewModal(cardData);
+    modalImage.src = cardData.link;
+    openPreviewModal();
   });
 
   return cardElement;
