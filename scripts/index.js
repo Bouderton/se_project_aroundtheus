@@ -78,26 +78,21 @@ function getCardElement(cardData) {
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name + "Photo";
-  cardImageEl.addEventListener("click", () => {
-    openPreviewModal(cardData);
-  });
 
   const likeBtn = cardElement.querySelector(".card__like-button");
   likeBtn.addEventListener("click", () => {
     likeBtn.classList.toggle("card__like-button_active");
   });
 
-  const cardTrashBtn = document.querySelector(".card__trash-button");
+  const cardTrashBtn = cardElement.querySelector(".card__trash-button");
   cardTrashBtn.addEventListener("click", (e) => {
-    e.target.closest(cardElement).remove();
+    cardElement.remove();
   });
 
-  const cardImages = document.querySelectorAll(".card__image");
-  cardImages.forEach((cardImage) => {
-    cardImage.addEventListener("click", () => {
-      openPreviewModal();
-    });
+  cardImageEl.addEventListener("click", () => {
+    openPreviewModal(cardData);
   });
+
   return cardElement;
 }
 
