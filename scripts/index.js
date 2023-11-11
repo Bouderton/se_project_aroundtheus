@@ -45,7 +45,9 @@ const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardsWrap = document.querySelector(".cards__list");
 const previewModal = document.querySelector("#preview-modal");
-const modalContainer = document.querySelector(".modal__container");
+const modalPreviewContainer = document.querySelector(
+  ".modal__preview-container"
+);
 const closeBtn = document.querySelector("#close-button");
 
 // FUNCTIONS
@@ -81,7 +83,8 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__description-text");
-  const modalImage = previewModal.querySelector(".card__image");
+  const modalImage = previewModal.querySelector(".card__preview-image");
+  const previewCaption = previewModal.querySelector(".modal__preview_caption");
 
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
@@ -99,7 +102,7 @@ function getCardElement(cardData) {
 
   cardImageEl.addEventListener("click", () => {
     modalImage.src = cardData.link;
-    cardTitleEl.textContent = cardData.name;
+    previewCaption.textContent = cardData.name;
     openPreviewModal();
   });
 

@@ -13,6 +13,12 @@
   cursor: pointer;
 }
 
+.card__preview-image {
+  max-width: 75vw;
+  max-height: 75vh;
+  object-fit: cover;
+}
+
 .card__description {
   display: flex;
   align-items: center;
@@ -34,6 +40,15 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.modal__preview_caption {
+  color: #fff;
+  font-family: "Inter", Arial, serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .card__like-button {

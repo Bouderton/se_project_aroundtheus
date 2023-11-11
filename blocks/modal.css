@@ -28,6 +28,16 @@
   width: 430px;
 }
 
+.modal__preview-container {
+  background: transparent;
+  margin: auto;
+  padding: 34px 36px 36px;
+  border-radius: 10px;
+  position: relative;
+  max-width: 75vw;
+  max-height: 75vh;
+}
+
 .modal__close-button {
   position: absolute;
   top: -45px;
