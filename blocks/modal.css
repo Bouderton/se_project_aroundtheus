@@ -110,7 +110,7 @@
   opacity: 0.8;
 }
 
-.modal__preview_caption {
+.modal__preview_modal__preview_caption {
   color: #fff;
   font-family: Inter;
   font-size: 12px;
@@ -120,7 +120,7 @@
   margin: 10px 0 0;
 }
 
-.modal__preview_image {
+.modal__preview_modal__preview_image {
   max-width: 75vw;
   max-height: 75vh;
   object-fit: cover;
