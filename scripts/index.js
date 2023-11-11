@@ -83,7 +83,7 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__description-text");
-  const modalImage = previewModal.querySelector(".card__preview-image");
+  const modalImage = previewModal.querySelector(".modal__preview_image");
   const previewCaption = previewModal.querySelector(".modal__preview_caption");
 
   cardTitleEl.textContent = cardData.name;

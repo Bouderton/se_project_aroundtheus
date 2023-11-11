@@ -13,12 +13,6 @@
   cursor: pointer;
 }
 
-.card__preview-image {
-  max-width: 75vw;
-  max-height: 75vh;
-  object-fit: cover;
-}
-
 .card__description {
   display: flex;
   align-items: center;
