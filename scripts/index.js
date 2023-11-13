@@ -25,7 +25,7 @@ const initialCards = [
   },
 ];
 
-// VARIABLES
+// Profile Variables
 
 const profileEditBtn = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -34,21 +34,30 @@ const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 const profileTitleInput = document.querySelector("#profile-title-input");
 const profileSubtitleInput = document.querySelector("#profile-subtitle-input");
-const profileEditForm = profileEditModal.querySelector("#modal-form");
+const profileForm = document.forms["modal-form"];
+
+// Card Variables
+
 const addCardForm = document.querySelector("#add-card-modal");
-const addNewCardBtn = document.querySelector("#add-card-button");
-const addCardCloseBtn = document.querySelector("#add-card-close-button");
 const cardTitleInput = document.querySelector("#card-title-input");
 const cardUrlInput = document.querySelector("#url-input");
-const cardSubmitBtn = addCardForm.querySelector("#card-save-button");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardsWrap = document.querySelector(".cards__list");
+
+// Preview Image Variables
+
 const previewModal = document.querySelector("#preview-modal");
 const modalPreviewContainer = document.querySelector(
   ".modal__preview-container"
 );
 const previewCloseBtn = document.querySelector("#close-button");
+
+// Buttons
+
+const cardSubmitBtn = addCardForm.querySelector("#card-save-button");
+const addNewCardBtn = document.querySelector("#add-card-button");
+const addCardCloseBtn = document.querySelector("#add-card-close-button");
 
 // FUNCTIONS
 
@@ -77,6 +86,7 @@ function handleCardSubmit(e) {
   });
   cardsWrap.prepend(cardElement);
   closePopup(addCardForm);
+  e.target.reset();
 }
 
 function getCardElement(cardData) {
@@ -132,7 +142,7 @@ profileCloseBtn.addEventListener("click", () => {
   closePopup(profileEditModal);
 });
 
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+profileForm.addEventListener("submit", handleProfileEditSubmit);
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
@@ -142,3 +152,10 @@ initialCards.forEach((cardData) => {
 addNewCardBtn.addEventListener("click", () => {
   openPopup(addCardForm);
 });
+
+/* THINGS TO FIX/ADD BEFORE RESUBMISSION:
+
+Preview close btn adaptability
+Universal close popup
+
+*/
