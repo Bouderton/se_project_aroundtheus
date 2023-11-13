@@ -29,7 +29,6 @@ const initialCards = [
 
 const profileEditBtn = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
-const profileCloseBtn = profileEditModal.querySelector("#profile-close-button");
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 const profileTitleInput = document.querySelector("#profile-title-input");
@@ -51,13 +50,17 @@ const previewModal = document.querySelector("#preview-modal");
 const modalPreviewContainer = document.querySelector(
   ".modal__preview-container"
 );
-const previewCloseBtn = document.querySelector("#close-button");
 
 // Buttons
 
 const cardSubmitBtn = addCardForm.querySelector("#card-save-button");
 const addNewCardBtn = document.querySelector("#add-card-button");
-const addCardCloseBtn = document.querySelector("#add-card-close-button");
+const closeBtns = document.querySelectorAll(".modal__close-button");
+
+closeBtns.forEach((button) => {
+  const popup = button.closest(".modal");
+  button.addEventListener("click", () => closePopup(popup));
+});
 
 // FUNCTIONS
 
@@ -122,24 +125,12 @@ function getCardElement(cardData) {
 
 // EVENTS
 
-previewCloseBtn.addEventListener("click", () => {
-  closePopup(previewModal);
-});
-
-addCardCloseBtn.addEventListener("click", () => {
-  closePopup(addCardForm);
-});
-
 addCardForm.addEventListener("submit", handleCardSubmit);
 
 profileEditBtn.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileSubtitleInput.value = profileSubtitle.textContent;
   openPopup(profileEditModal);
-});
-
-profileCloseBtn.addEventListener("click", () => {
-  closePopup(profileEditModal);
 });
 
 profileForm.addEventListener("submit", handleProfileEditSubmit);
@@ -152,10 +143,3 @@ initialCards.forEach((cardData) => {
 addNewCardBtn.addEventListener("click", () => {
   openPopup(addCardForm);
 });
-
-/* THINGS TO FIX/ADD BEFORE RESUBMISSION:
-
-Preview close btn adaptability
-Universal close popup
-
-*/
