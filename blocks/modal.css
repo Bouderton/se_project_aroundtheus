@@ -126,6 +126,17 @@
   object-fit: cover;
 }
 
+.modal__error {
+  font-size: 12px;
+  font-family: "Inter", Arial, serif;
+  line-height: 15px;
+  color: red;
+  position: relative;
+  bottom: 20px;
+  transition: opacity 0.3s;
+  opacity: 1;
+}
+
 @media screen and (max-width: 620px) {
   .modal__close-button {
     width: 26px;
