@@ -1,6 +1,3 @@
-// enabling validation by calling enableValidation()
-// pass all the settings on call
-
 function showInputError(forms, inputElements, { inputErrorClass }) {
   const errorMessageEl = forms.querySelector(`#${inputElements.id}-error`);
   inputElements.classList.add(".modal__error");
