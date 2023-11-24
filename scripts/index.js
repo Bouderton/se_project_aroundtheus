@@ -38,10 +38,11 @@ const profileForm = document.forms["modal-form"];
 
 const addCardForm = document.querySelector("#add-card-modal");
 const cardTitleInput = document.querySelector("#card-title-input");
-const cardUrlInput = document.querySelector("#url-input");
+const cardUrlInput = document.querySelector("#modal-url-input");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardsWrap = document.querySelector(".cards__list");
+const cardTitle = document.querySelector(".card__description-text");
 
 // Preview Image Variables
 
