@@ -18,6 +18,14 @@ function checkInputValidity(forms, inputElements) {
   } else {
     hideInputError(forms, inputElements, config);
   }
+  profileEditBtn.addEventListener("click", () => {
+    profileTitleInput.value = profileTitle.textContent;
+    profileSubtitleInput.value = profileSubtitle.textContent;
+    [profileTitleInput, profileSubtitleInput].forEach((input) =>
+      checkInputValidity(profileForm, input)
+    );
+    openPopup(profileEditModal);
+  });
 }
 
 function setEventListeners(forms, config) {

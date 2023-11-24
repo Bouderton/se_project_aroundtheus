@@ -27,7 +27,6 @@ const initialCards = [
 
 // Profile Variables
 
-const profileEditBtn = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
@@ -53,6 +52,7 @@ const modalPreviewContainer = document.querySelector(
 
 // Buttons
 
+const profileEditBtn = document.querySelector("#profile-edit-button");
 const cardSubmitBtn = addCardForm.querySelector("#card-save-button");
 const addNewCardBtn = document.querySelector("#add-card-button");
 const closeBtns = document.querySelectorAll(".modal__close-button");
