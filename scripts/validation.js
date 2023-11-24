@@ -5,11 +5,11 @@ function showInputError(forms, inputElements, { inputErrorClass }) {
   inputElements.classList.add(inputErrorClass);
 }
 
-function hideInputError(inputElements) {
-  inputElements.classList.add(inputErrorClass);
+function hideInputError(inputElements, { inputErrorClass }) {
+  inputElements.classList.remove(inputErrorClass);
 }
 
-function checkInputValidity(forms, inputElements, config) {
+function checkInputValidity(forms, inputElements) {
   if (!inputElements.validity.valid) {
     showInputError(forms, inputElements, config);
   } else {
