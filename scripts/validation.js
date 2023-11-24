@@ -5,8 +5,9 @@ function showInputError(forms, inputElements, { inputErrorClass }) {
   inputElements.classList.add(inputErrorClass);
 }
 
-function hideInputError(inputElements, { inputErrorClass }) {
-  inputElements.classList.remove(inputErrorClass);
+function hideInputError(inputElements, { inputErrorClass }, errorMessageEl) {
+  inputElements.classList.add(inputErrorClass);
+  errorMessageEl.textContent = "";
 }
 
 function checkInputValidity(forms, inputElements) {
