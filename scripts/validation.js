@@ -5,8 +5,10 @@ function showInputError(forms, inputElements, { inputErrorClass }) {
   inputElements.classList.add(inputErrorClass);
 }
 
-function hideInputError(inputElements, { inputErrorClass }, errorMessageEl) {
-  inputElements.classList.add(inputErrorClass);
+function hideInputError(forms, inputElements, { inputErrorClass }) {
+  const errorMessageEl = forms.querySelector(`#${inputElements.id}-error`);
+  inputElements.classList.remove(".modal__error");
+  inputElements.classList.remove(inputErrorClass);
   errorMessageEl.textContent = "";
 }
 
