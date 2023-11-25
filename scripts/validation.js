@@ -20,7 +20,7 @@ function checkInputValidity(forms, inputElement) {
   }
 }
 
-function toggleButtonState(inputElements, submitBtn, { inactiveButtonClass }) {
+function toggleButtonState(inputElements, submitBtn, config) {
   let foundInvalid = false;
   inputElements.forEach((inputElement) => {
     if (!inputElement.validity.valid) {
@@ -29,10 +29,10 @@ function toggleButtonState(inputElements, submitBtn, { inactiveButtonClass }) {
   });
 
   if (foundInvalid) {
-    submitBtn.classList.add(inactiveButtonClass);
+    submitBtn.classList.add(config.inactiveButtonClass);
     submitBtn.disabled = true;
   } else {
-    submitBtn.classList.remove(inactiveButtonClass);
+    submitBtn.classList.remove(config.inactiveButtonClass);
     submitBtn.disabled = false;
   }
 }
