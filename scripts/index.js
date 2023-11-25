@@ -162,3 +162,21 @@ addNewCardBtn.addEventListener("click", () => {
   hideInputError();
   openPopup(addCardForm);
 });
+
+profileEditModal.addEventListener("click", (evt) => {
+  if (evt.target.classList.contains("modal")) {
+    closePopup(profileEditModal);
+  }
+});
+
+addCardForm.addEventListener("click", (evt) => {
+  if (evt.target.classList.contains("modal")) {
+    closePopup(addCardForm);
+  }
+});
+
+profileEditModal.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    closePopup(profileEditModal);
+  }
+});
