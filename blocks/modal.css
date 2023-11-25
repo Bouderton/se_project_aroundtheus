@@ -110,6 +110,10 @@
   line-height: normal;
 }
 
+.modal__save-button_disabled {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
 .modal__save-button:hover {
   cursor: pointer;
   opacity: 0.8;

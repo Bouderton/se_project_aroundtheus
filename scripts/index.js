@@ -144,3 +144,20 @@ initialCards.forEach((cardData) => {
 addNewCardBtn.addEventListener("click", () => {
   openPopup(addCardForm);
 });
+
+profileEditBtn.addEventListener("click", () => {
+  profileTitleInput.value = profileTitle.textContent;
+  profileSubtitleInput.value = profileSubtitle.textContent;
+  [profileTitleInput, profileSubtitleInput].forEach((input) =>
+    checkInputValidity(profileForm, input)
+  );
+  openPopup(profileEditModal);
+});
+addNewCardBtn.addEventListener("click", () => {
+  cardTitleInput.value = "";
+  cardUrlInput.value = "";
+  [cardTitleInput, cardUrlInput].forEach((input) => {
+    checkInputValidity(input);
+  });
+  openPopup(addCardForm);
+});

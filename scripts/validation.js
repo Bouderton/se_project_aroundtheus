@@ -18,30 +18,33 @@ function checkInputValidity(forms, inputElement) {
   } else {
     hideInputError(forms, inputElement, config);
   }
-  profileEditBtn.addEventListener("click", () => {
-    profileTitleInput.value = profileTitle.textContent;
-    profileSubtitleInput.value = profileSubtitle.textContent;
-    [profileTitleInput, profileSubtitleInput].forEach((input) =>
-      checkInputValidity(profileForm, input)
-    );
-    openPopup(profileEditModal);
+}
+
+function toggleButtonState(inputElements, submitBtn, inactiveButtonClass) {
+  let foundInvalid = false;
+  inputElements.forEach((inputElement) => {
+    if (!inputElement.validity.valid) {
+      foundInvalid = true;
+    }
   });
-  addNewCardBtn.addEventListener("click", () => {
-    cardTitleInput.value = "";
-    cardUrlInput.value = "";
-    [cardTitleInput, cardUrlInput].forEach((input) => {
-      checkInputValidity(input);
-    });
-    openPopup(addCardForm);
-  });
+
+  if (foundInvalid) {
+    submitBtn.classList.add(inactiveButtonClass);
+    submitBtn.disabled = true;
+  } else {
+    submitBtn.classList.remove(inactiveButtonClass);
+    submitBtn.disabled = false;
+  }
 }
 
 function setEventListeners(forms, config) {
   const { inputSelector } = config;
   const inputElements = forms.querySelectorAll(inputSelector);
+  const submitBtn = forms.querySelector(".modal__save-button");
   inputElements.forEach((inputElement) => {
     inputElement.addEventListener("input", (e) => {
       checkInputValidity(forms, inputElement, config);
+      toggleButtonState(inputElements, submitBtn);
     });
   });
 }
@@ -61,7 +64,7 @@ const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__form-input",
   submitButtonSelector: ".modal__save-button",
-  inactiveButtonClass: ".modal__button_disabled",
+  inactiveButtonClass: ".modal__save-button_disabled",
   inputErrorClass: ".modal__error",
   errorClass: ".modal__form-input_type_error",
 };
