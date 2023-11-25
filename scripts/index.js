@@ -54,6 +54,7 @@ const modalPreviewContainer = document.querySelector(
 // Buttons
 
 const profileEditBtn = document.querySelector("#profile-edit-button");
+const profileSubmitBtn = profileEditModal.querySelector(".modal__save-button");
 const cardSubmitBtn = addCardForm.querySelector("#card-save-button");
 const addNewCardBtn = document.querySelector("#add-card-button");
 const closeBtns = document.querySelectorAll(".modal__close-button");
@@ -66,10 +67,12 @@ closeBtns.forEach((button) => {
 // FUNCTIONS
 
 function openPopup(popup) {
+  document.addEventListener("keydown", escClose);
   popup.classList.add("modal_opened");
 }
 
 function closePopup(popup) {
+  document.removeEventListener("keydown", escClose);
   popup.classList.remove("modal_opened");
 }
 
@@ -91,6 +94,8 @@ function handleCardSubmit(e) {
   cardsWrap.prepend(cardElement);
   closePopup(addCardForm);
   e.target.reset();
+  cardSubmitBtn.classList.add(config.inactiveButtonClass);
+  cardSubmitBtn.disabled = true;
 }
 
 function getCardElement(cardData) {
@@ -151,16 +156,9 @@ profileEditBtn.addEventListener("click", () => {
   [profileTitleInput, profileSubtitleInput].forEach((input) =>
     checkInputValidity(profileForm, input)
   );
+  profileSubmitBtn.classList.remove(config.inactiveButtonClass);
+  profileSubmitBtn.disabled = false;
   openPopup(profileEditModal);
-});
-addNewCardBtn.addEventListener("click", () => {
-  cardTitleInput.value = "";
-  cardUrlInput.value = "";
-  [cardTitleInput, cardUrlInput].forEach((input) => {
-    checkInputValidity(input);
-  });
-  hideInputError();
-  openPopup(addCardForm);
 });
 
 profileEditModal.addEventListener("click", (evt) => {
@@ -175,8 +173,11 @@ addCardForm.addEventListener("click", (evt) => {
   }
 });
 
-profileEditModal.addEventListener("keydown", (evt) => {
+document.addEventListener("keydown", escClose);
+
+function escClose(evt) {
+  const openedModal = document.querySelector(".modal_opened");
   if (evt.key === "Escape") {
-    closePopup(profileEditModal);
+    closePopup(openedModal);
   }
-});
+}
