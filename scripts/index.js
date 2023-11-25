@@ -159,5 +159,6 @@ addNewCardBtn.addEventListener("click", () => {
   [cardTitleInput, cardUrlInput].forEach((input) => {
     checkInputValidity(input);
   });
+  hideInputError();
   openPopup(addCardForm);
 });

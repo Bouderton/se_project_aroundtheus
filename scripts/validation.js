@@ -20,7 +20,7 @@ function checkInputValidity(forms, inputElement) {
   }
 }
 
-function toggleButtonState(inputElements, submitBtn, inactiveButtonClass) {
+function toggleButtonState(inputElements, submitBtn, { inactiveButtonClass }) {
   let foundInvalid = false;
   inputElements.forEach((inputElement) => {
     if (!inputElement.validity.valid) {
@@ -44,7 +44,7 @@ function setEventListeners(forms, config) {
   inputElements.forEach((inputElement) => {
     inputElement.addEventListener("input", (e) => {
       checkInputValidity(forms, inputElement, config);
-      toggleButtonState(inputElements, submitBtn);
+      toggleButtonState(inputElements, submitBtn, config);
     });
   });
 }
@@ -64,7 +64,7 @@ const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__form-input",
   submitButtonSelector: ".modal__save-button",
-  inactiveButtonClass: ".modal__save-button_disabled",
+  inactiveButtonClass: "modal__save-button_disabled",
   inputErrorClass: ".modal__error",
   errorClass: ".modal__form-input_type_error",
 };
