@@ -1,22 +1,22 @@
-function showInputError(forms, inputElement, { inputErrorClass }, errorClass) {
-  const errorMessageEl = forms.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.add("modal__form-input_type_error");
+function showInputError(form, inputElement, { inputErrorClass }, errorClass) {
+  const errorMessageEl = form.querySelector(`#${inputElement.id}-error`);
+  inputElement.classList.add(errorClass);
   errorMessageEl.textContent = inputElement.validationMessage;
   errorMessageEl.classList.add(errorClass);
 }
 
-function hideInputError(forms, inputElement, { inputErrorClass }) {
-  const errorMessageEl = forms.querySelector(`#${inputElement.id}-error`);
+function hideInputError(form, inputElement, { inputErrorClass }) {
+  const errorMessageEl = form.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.remove("modal__form-input_type_error");
   inputElement.classList.remove(inputErrorClass);
   errorMessageEl.textContent = "";
 }
 
-function checkInputValidity(forms, inputElement) {
+function checkInputValidity(form, inputElement) {
   if (!inputElement.validity.valid) {
-    showInputError(forms, inputElement, config);
+    showInputError(form, inputElement, config);
   } else {
-    hideInputError(forms, inputElement, config);
+    hideInputError(form, inputElement, config);
   }
 }
 
@@ -37,13 +37,13 @@ function toggleButtonState(inputElements, submitBtn, config) {
   }
 }
 
-function setEventListeners(forms, config) {
+function setEventListeners(form, config) {
   const { inputSelector } = config;
-  const inputElements = forms.querySelectorAll(inputSelector);
-  const submitBtn = forms.querySelector(".modal__save-button");
+  const inputElements = form.querySelectorAll(inputSelector);
+  const submitBtn = form.querySelector(".modal__save-button");
   inputElements.forEach((inputElement) => {
     inputElement.addEventListener("input", (e) => {
-      checkInputValidity(forms, inputElement, config);
+      checkInputValidity(form, inputElement, config);
       toggleButtonState(inputElements, submitBtn, config);
     });
   });
@@ -51,12 +51,12 @@ function setEventListeners(forms, config) {
 
 function enableValidation(config) {
   const forms = document.querySelectorAll(".modal__form");
-  forms.forEach((forms) => {
-    forms.addEventListener("submit", (e) => {
+  forms.forEach((form) => {
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
     });
 
-    setEventListeners(forms, config);
+    setEventListeners(form, config);
   });
 }
 
