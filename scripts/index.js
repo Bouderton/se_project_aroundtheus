@@ -173,6 +173,12 @@ addCardForm.addEventListener("click", (evt) => {
   }
 });
 
+previewModal.addEventListener("click", (evt) => {
+  if (evt.target.classList.contains("modal")) {
+    closePopup(previewModal);
+  }
+});
+
 document.addEventListener("keydown", escClose);
 
 function escClose(evt) {
