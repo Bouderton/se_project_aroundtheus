@@ -174,8 +174,8 @@ modals.forEach((modal) => {
 });
 
 function handleEscape(evt) {
-  const openedModal = document.querySelector(".modal_opened");
   if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
     closePopup(openedModal);
   }
 }
