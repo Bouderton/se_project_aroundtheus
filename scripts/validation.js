@@ -39,7 +39,7 @@ function toggleButtonState(inputElements, submitBtn, config) {
 function setEventListeners(form, config) {
   const { inputSelector } = config;
   const inputElements = form.querySelectorAll(inputSelector);
-  const submitBtn = form.querySelector(".modal__save-button");
+  const submitBtn = form.querySelector(config.submitButtonSelector);
   inputElements.forEach((inputElement) => {
     inputElement.addEventListener("input", (e) => {
       checkInputValidity(form, inputElement, config);
@@ -49,7 +49,7 @@ function setEventListeners(form, config) {
 }
 
 function enableValidation(config) {
-  const forms = document.querySelectorAll(".modal__form");
+  const forms = document.querySelectorAll(config.formSelector);
   forms.forEach((form) => {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
