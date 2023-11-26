@@ -167,7 +167,7 @@ const modals = document.querySelectorAll(".modal");
 
 modals.forEach((modal) => {
   modal.addEventListener("mousedown", (evt) => {
-    if (evt.key === "Escape") {
+    if (evt.target.classList.contains("modal")) {
       closePopup(modal);
     }
   });
