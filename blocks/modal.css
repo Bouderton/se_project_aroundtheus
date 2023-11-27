@@ -111,18 +111,6 @@
 }
 
 .modal__save-button_disabled {
-  margin: 18px 0 0;
-  padding: 0;
-  border: none;
-  height: 50px;
-  text-align: center;
-  color: #fff;
-  font-family: "Inter", Arial, serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  border-radius: 2px;
   background: rgba(0, 0, 0, 0.8);
 }
 
