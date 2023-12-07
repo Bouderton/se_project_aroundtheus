@@ -1,3 +1,5 @@
+import FormValidator from "../components/FormValidator.js";
+
 const initialCards = [
   {
     name: "Yosmite",
@@ -104,19 +106,27 @@ function getCardElement(cardData) {
   const cardTitleEl = cardElement.querySelector(".card__description-text");
   const modalImage = previewModal.querySelector(".modal__image");
   const previewCaption = previewModal.querySelector(".modal__caption");
+  const likeBtn = cardElement.querySelector(".card__like-button");
+  const cardTrashBtn = cardElement.querySelector(".card__trash-button");
 
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name + "Photo";
 
-  const likeBtn = cardElement.querySelector(".card__like-button");
+  const handleLikeIcon = (evt) => {
+    evt.classList.toggle("card__like-button_active");
+  };
+
+  const handleDeleteCard = () => {
+    cardElement.remove();
+  };
+
   likeBtn.addEventListener("click", () => {
-    likeBtn.classList.toggle("card__like-button_active");
+    handleLikeIcon(likeBtn);
   });
 
-  const cardTrashBtn = cardElement.querySelector(".card__trash-button");
   cardTrashBtn.addEventListener("click", (e) => {
-    cardElement.remove();
+    handleDeleteCard();
   });
 
   cardImageEl.addEventListener("click", () => {
