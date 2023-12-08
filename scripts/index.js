@@ -189,3 +189,16 @@ function handleEscape(evt) {
     closePopup(openedModal);
   }
 }
+
+const config = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__form-input",
+  submitButtonSelector: ".modal__save-button",
+  inactiveButtonClass: "modal__save-button_disabled",
+  inputErrorClass: "modal__error",
+  errorClass: "modal__form-input_type_error",
+};
+
+const addCardFormValidator = new FormValidator(config, addCardForm);
+
+const editProfileFormValidator = new FormValidator(config, profileEditModal);
