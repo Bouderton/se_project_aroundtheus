@@ -165,9 +165,6 @@ addNewCardBtn.addEventListener("click", () => {
 profileEditBtn.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileSubtitleInput.value = profileSubtitle.textContent;
-  [profileTitleInput, profileSubtitleInput].forEach((input) =>
-    checkInputValidity(profileForm, input)
-  );
   profileSubmitBtn.classList.remove(config.inactiveButtonClass);
   profileSubmitBtn.disabled = false;
   openPopup(profileEditModal);
