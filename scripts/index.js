@@ -199,3 +199,4 @@ const config = {
 const addCardFormValidator = new FormValidator(config, addCardForm);
 
 const editProfileFormValidator = new FormValidator(config, profileEditModal);
+editProfileFormValidator.enableValidation();
