@@ -3,28 +3,28 @@ import Card from "../components/Card.js";
 
 const initialCards = [
   {
-    name: "Yosmite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+    name: "Lago di Braies",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
   {
     name: "Vanoise National Park",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
   },
   {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+    name: "Latemar",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+  },
+  {
+    name: "Bald Mountains",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+  },
+  {
+    name: "Lake Louise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+  },
+  {
+    name: "Yosmite",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
   },
 ];
 
@@ -32,9 +32,6 @@ const cardData = {
   name: "Yosmite",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 };
-
-const card = new Card(cardData, "#card-template", handleImageClick);
-card.getView();
 
 // Profile Variables
 
@@ -47,7 +44,7 @@ const profileForm = document.forms["modal-form"];
 
 // Card Variables
 
-const addCardForm = document.querySelector("#add-card-modal");
+const addCardModal = document.querySelector("#add-card-modal");
 const cardTitleInput = document.querySelector("#card-title-input");
 const cardUrlInput = document.querySelector("#modal-url-input");
 const cardTemplate =
@@ -64,7 +61,7 @@ const previewCaption = previewModal.querySelector(".modal__caption");
 
 const profileEditBtn = document.querySelector("#profile-edit-button");
 const profileSubmitBtn = profileEditModal.querySelector(".modal__save-button");
-const cardSubmitBtn = addCardForm.querySelector("#card-save-button");
+const cardSubmitBtn = addCardModal.querySelector("#card-save-button");
 const addNewCardBtn = document.querySelector("#add-card-button");
 const closeBtns = document.querySelectorAll(".modal__close-button");
 
@@ -96,10 +93,9 @@ function handleCardSubmit(e) {
   e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
-  const card = new Card({ name, link }, "#card-template", handleImageClick);
-  const cardElement = card.getView();
-  cardsWrap.prepend(cardElement);
-  closePopup(addCardForm);
+  createCard({ name, link });
+  closePopup(addCardModal);
+
   e.target.reset();
   cardSubmitBtn.classList.add(config.inactiveButtonClass);
   cardSubmitBtn.disabled = true;
@@ -112,12 +108,18 @@ function handleImageClick(card) {
   openPopup(previewModal);
 }
 
+function createCard(cardData) {
+  const card = new Card(cardData, "#card-template", handleImageClick);
+  cardsWrap.prepend(card.getView());
+}
+
 // EVENTS
 
-addCardForm.addEventListener("submit", handleCardSubmit);
+addCardModal.addEventListener("submit", handleCardSubmit);
 
 profileEditBtn.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
+  0;
   profileSubtitleInput.value = profileSubtitle.textContent;
   openPopup(profileEditModal);
 });
@@ -125,15 +127,14 @@ profileEditBtn.addEventListener("click", () => {
 profileForm.addEventListener("submit", handleProfileEditSubmit);
 
 initialCards.forEach((cardData) => {
-  const card = new Card(cardData, "#card-template", handleImageClick);
-  const cardElement = card.getView();
-  cardsWrap.append(cardElement);
+  const cardElement = createCard(cardData);
+  return cardElement;
 });
 
 addNewCardBtn.addEventListener("click", () => {
   cardSubmitBtn.classList.add(config.inactiveButtonClass);
   cardSubmitBtn.disabled = true;
-  openPopup(addCardForm);
+  openPopup(addCardModal);
 });
 
 profileEditBtn.addEventListener("click", () => {
@@ -169,8 +170,8 @@ const config = {
   errorClass: "modal__form-input_type_error",
 };
 
-const addCardFormValidator = new FormValidator(config, addCardForm);
+const addCardFormValidator = new FormValidator(config, addCardModal);
 addCardFormValidator.enableValidation();
 
-const editProfileFormValidator = new FormValidator(config, profileEditModal);
+const editProfileFormValidator = new FormValidator(config, profileForm);
 editProfileFormValidator.enableValidation();
