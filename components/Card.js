@@ -1,7 +1,7 @@
 export default class Card {
   constructor({ name, link }, cardTemplate, handleImageClick) {
-    this._name = name;
-    this._link = link;
+    this.name = name;
+    this.link = link;
     this._cardTemplate = cardTemplate;
     this._handleImageClick = handleImageClick;
   }
@@ -41,9 +41,9 @@ export default class Card {
       ".card__description-text"
     );
 
-    this._cardTitleEl.textContent = this._name;
-    this._cardImageEl.src = this._link;
-    this._cardImageEl.alt = this._name + "Photo";
+    this._cardTitleEl.textContent = this.name;
+    this._cardImageEl.src = this.link;
+    this._cardImageEl.alt = this.name + "Photo";
 
     this._setEventListeners();
 

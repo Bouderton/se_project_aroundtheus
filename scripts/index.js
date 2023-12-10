@@ -57,6 +57,8 @@ const cardsWrap = document.querySelector(".cards__list");
 // Preview Image Variables
 
 const previewModal = document.querySelector("#preview-modal");
+const modalImage = previewModal.querySelector(".modal__image");
+const previewCaption = previewModal.querySelector(".modal__caption");
 
 // Buttons
 
@@ -94,10 +96,8 @@ function handleCardSubmit(e) {
   e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
-  const cardElement = getCardElement({
-    name,
-    link,
-  });
+  const card = new Card({ name, link }, "#card-template", handleImageClick);
+  const cardElement = card.getView();
   cardsWrap.prepend(cardElement);
   closePopup(addCardForm);
   e.target.reset();
@@ -109,8 +109,7 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__description-text");
-  // const modalImage = previewModal.querySelector(".modal__image");
-  // const previewCaption = previewModal.querySelector(".modal__caption");
+
   // const likeBtn = cardElement.querySelector(".card__like-button");
   // const cardTrashBtn = cardElement.querySelector(".card__trash-button");
 
@@ -144,10 +143,10 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-function handleImageClick(data) {
-  modalImage.src = data.link;
-  modalImage.alt = data.name;
-  previewCaption.textContent = data.name;
+function handleImageClick(card) {
+  modalImage.src = card.link;
+  modalImage.alt = card.name;
+  previewCaption.textContent = card.name;
   openPopup(previewModal);
 }
 
@@ -164,7 +163,7 @@ profileEditBtn.addEventListener("click", () => {
 profileForm.addEventListener("submit", handleProfileEditSubmit);
 
 initialCards.forEach((cardData) => {
-  const card = new Card(cardData, "#card-template");
+  const card = new Card(cardData, "#card-template", handleImageClick);
   const cardElement = card.getView();
   cardsWrap.append(cardElement);
 });
