@@ -105,6 +105,45 @@ function handleCardSubmit(e) {
   cardSubmitBtn.disabled = true;
 }
 
+function getCardElement(cardData) {
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardImageEl = cardElement.querySelector(".card__image");
+  const cardTitleEl = cardElement.querySelector(".card__description-text");
+  // const modalImage = previewModal.querySelector(".modal__image");
+  // const previewCaption = previewModal.querySelector(".modal__caption");
+  // const likeBtn = cardElement.querySelector(".card__like-button");
+  // const cardTrashBtn = cardElement.querySelector(".card__trash-button");
+
+  cardTitleEl.textContent = cardData.name;
+  cardImageEl.src = cardData.link;
+  cardImageEl.alt = cardData.name + "Photo";
+
+  // const handleLikeIcon = (evt) => {
+  //   evt.classList.toggle("card__like-button_active");
+  // };
+
+  // const handleDeleteCard = () => {
+  //   cardElement.remove();
+  // };
+
+  // likeBtn.addEventListener("click", () => {
+  //   handleLikeIcon(likeBtn);
+  // });
+
+  // cardTrashBtn.addEventListener("click", (e) => {
+  //   handleDeleteCard();
+  // });
+
+  // cardImageEl.addEventListener("click", () => {
+  //   modalImage.src = cardData.link;
+  //   modalImage.alt = cardData.name;
+  //   previewCaption.textContent = cardData.name;
+  //   openPopup(previewModal);
+  // });
+
+  return cardElement;
+}
+
 function handleImageClick(data) {
   modalImage.src = data.link;
   modalImage.alt = data.name;
