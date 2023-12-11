@@ -10,8 +10,6 @@ export default class FormValidator {
 
   _setEventListeners() {
     this._inputElements = this._form.querySelectorAll(this._inputSelector);
-    console.log(this._inputElements);
-    console.log(this._inputElements.validity);
     this.submitBtn = this._form.querySelector(this._submitButtonSelector);
     this._inputElements.forEach((inputElement) => {
       inputElement.addEventListener("input", (e) => {
@@ -46,8 +44,14 @@ export default class FormValidator {
     }
   }
 
+  _isFormValid() {
+    return this._inputElements.every((inputElement) => {
+      return inputElement.validity.valid;
+    });
+  }
+
   _toggleButtonState() {
-    if (!this._inputElements.validity.valid) {
+    if (!this._isFormValid()) {
       this.submitBtn.classList.add(this._inactiveButtonClass);
       this.submitBtn.disabled = true;
     } else {
