@@ -9,7 +9,7 @@ export default class FormValidator {
   }
 
   _setEventListeners() {
-    this._inputElements = this._form.querySelectorAll(this._inputSelector);
+    this._inputElements = [...this._form.querySelectorAll(this._inputSelector)];
     this.submitBtn = this._form.querySelector(this._submitButtonSelector);
     this._inputElements.forEach((inputElement) => {
       inputElement.addEventListener("input", (e) => {
@@ -66,5 +66,12 @@ export default class FormValidator {
     });
 
     this._setEventListeners();
+  }
+
+  resetValidation() {
+    this._toggleButtonState();
+    this._inputElements.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
   }
 }

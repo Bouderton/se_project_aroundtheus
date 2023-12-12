@@ -48,8 +48,6 @@ const addCardModal = document.querySelector("#add-card-modal");
 const addCardForm = addCardModal.querySelector("#add-card-form");
 const cardTitleInput = document.querySelector("#card-title-input");
 const cardUrlInput = document.querySelector("#modal-url-input");
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
 const cardsWrap = document.querySelector(".cards__list");
 
 // Preview Image Variables
@@ -61,8 +59,6 @@ const previewCaption = previewModal.querySelector(".modal__caption");
 // Buttons
 
 const profileEditBtn = document.querySelector("#profile-edit-button");
-const profileSubmitBtn = profileEditModal.querySelector(".modal__save-button");
-const cardSubmitBtn = addCardModal.querySelector("#card-save-button");
 const addNewCardBtn = document.querySelector("#add-card-button");
 const closeBtns = document.querySelectorAll(".modal__close-button");
 
@@ -94,12 +90,10 @@ function handleCardSubmit(e) {
   e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
-  createCard({ name, link });
+  const cardElement = createCard({ name, link });
+  cardsWrap.prepend(cardElement);
   closePopup(addCardModal);
-
   e.target.reset();
-  cardSubmitBtn.classList.add(config.inactiveButtonClass);
-  cardSubmitBtn.disabled = true;
 }
 
 function handleImageClick(card) {
@@ -132,16 +126,12 @@ initialCards.forEach((cardData) => {
 });
 
 addNewCardBtn.addEventListener("click", () => {
-  cardSubmitBtn.classList.add(config.inactiveButtonClass);
-  cardSubmitBtn.disabled = true;
   openPopup(addCardModal);
 });
 
 profileEditBtn.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileSubtitleInput.value = profileSubtitle.textContent;
-  profileSubmitBtn.classList.remove(config.inactiveButtonClass);
-  profileSubmitBtn.disabled = false;
   openPopup(profileEditModal);
 });
 
@@ -172,6 +162,8 @@ const config = {
 
 const addCardFormValidator = new FormValidator(config, addCardForm);
 addCardFormValidator.enableValidation();
+addCardFormValidator.resetValidation();
 
 const editProfileFormValidator = new FormValidator(config, profileForm);
 editProfileFormValidator.enableValidation();
+editProfileFormValidator.resetValidation();
