@@ -94,6 +94,7 @@ function handleCardSubmit(e) {
   cardsWrap.prepend(cardElement);
   closePopup(addCardModal);
   e.target.reset();
+  addCardFormValidator.resetValidation();
 }
 
 function handleImageClick(card) {
@@ -115,6 +116,7 @@ addCardModal.addEventListener("submit", handleCardSubmit);
 profileEditBtn.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileSubtitleInput.value = profileSubtitle.textContent;
+  editProfileFormValidator.resetValidation();
   openPopup(profileEditModal);
 });
 
@@ -162,8 +164,6 @@ const config = {
 
 const addCardFormValidator = new FormValidator(config, addCardForm);
 addCardFormValidator.enableValidation();
-addCardFormValidator.resetValidation();
 
 const editProfileFormValidator = new FormValidator(config, profileForm);
 editProfileFormValidator.enableValidation();
-editProfileFormValidator.resetValidation();
