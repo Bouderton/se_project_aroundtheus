@@ -167,5 +167,3 @@ addCardFormValidator.enableValidation();
 
 const editProfileFormValidator = new FormValidator(config, profileForm);
 editProfileFormValidator.enableValidation();
-
-console.log("Hello World!");
