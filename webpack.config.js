@@ -40,6 +40,22 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif|woff(2)?|eot|ttf|otf)$/,
+        type: "asset/resource",
+      },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: { importLoaders: 1 },
+          },
+          // add postcss-loader
+          "postcss-loader",
+        ],
+      },
     ],
   },
   plugins: [
