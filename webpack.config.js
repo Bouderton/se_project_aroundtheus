@@ -1,3 +1,4 @@
+// webpack.config.js
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -17,7 +18,7 @@ module.exports = {
   stats: "errors-only",
   mode: "development",
   devServer: {
-    static: path.resolve(__dirname, "./dist"),
+    static: path.resolve(__dirname, "dist"),
     compress: true,
     port: 8080,
     open: true,
@@ -43,18 +44,6 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg|gif|woff(2)?|eot|ttf|otf)$/,
         type: "asset/resource",
-      },
-      {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          // add postcss-loader
-          "postcss-loader",
-        ],
       },
     ],
   },
