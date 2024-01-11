@@ -19,6 +19,6 @@ export default class PopupWithForm extends Popup {
 
 //index.js
 
-const formPopup = new PopupWithForm("#profile-edit-modal", () => {});
-formPopup.open();
-formPopup.close();
+// const formPopup = new PopupWithForm("#profile-edit-modal", () => {});
+// formPopup.open();
+// formPopup.close();

@@ -66,7 +66,7 @@ const closeBtns = document.querySelectorAll(".modal__close-button");
 
 closeBtns.forEach((button) => {
   const popup = button.closest(".modal");
-  button.addEventListener("click", () => closePopup(popup));
+  button.addEventListener("click", () => newPopupForm.close());
 });
 
 // FUNCTIONS
@@ -76,16 +76,16 @@ closeBtns.forEach((button) => {
 //   popup.classList.add("modal_opened");
 // }
 
-function closePopup(popup) {
-  document.removeEventListener("keydown", handleEscape);
-  popup.classList.remove("modal_opened");
-}
+// function closePopup(popup) {
+//   document.removeEventListener("keydown", handleEscape);
+//   popup.classList.remove("modal_opened");
+// }
 
 function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileSubtitle.textContent = profileSubtitleInput.value;
-  closePopup(profileEditModal);
+  newPopupForm.close();
 }
 
 function handleCardSubmit(e) {
@@ -140,21 +140,12 @@ profileEditBtn.addEventListener("click", () => {
   // openPopup(profileEditModal);
 });
 
-const modals = document.querySelectorAll(".modal");
-modals.forEach((modal) => {
-  modal.addEventListener("mousedown", (evt) => {
-    if (evt.target.classList.contains("modal")) {
-      closePopup(modal);
-    }
-  });
-});
-
-function handleEscape(evt) {
-  if (evt.key === "Escape") {
-    const openedModal = document.querySelector(".modal_opened");
-    closePopup(openedModal);
-  }
-}
+// function handleEscape(evt) {
+//   if (evt.key === "Escape") {
+//     const openedModal = document.querySelector(".modal_opened");
+//     // closePopup(openedModal);
+//   }
+// }
 
 const config = {
   formSelector: ".modal__form",
@@ -171,5 +162,5 @@ addCardFormValidator.enableValidation();
 const editProfileFormValidator = new FormValidator(config, profileForm);
 editProfileFormValidator.enableValidation();
 
-const newPopupForm = new PopupWithForm("#profile-edit-modal", handleEscape);
+const newPopupForm = new PopupWithForm("#profile-edit-modal");
 newPopupForm.setEventListeners();

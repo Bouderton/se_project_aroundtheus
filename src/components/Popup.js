@@ -1,30 +1,27 @@
 export default class Popup {
-  constructor({ popupSelector }, handleEscape) {
+  constructor({ popupSelector }) {
     this._popupElement = document.querySelector(popupSelector);
-    console.log(this._popupElement);
     this._button = document.querySelector("#profile-edit-button");
-    this._handleEscape = handleEscape;
   }
   open() {
-    this._popupElement.classList.add("modal-opened");
-    document.addEventListener("keydown", this._handleEscape);
+    this._popupElement.classList.add("modal_opened");
+    document.addEventListener("keydown", this._handleEscClose);
   }
 
   close() {
-    document.removeEventListener("keydown", this._handleEscape);
-    this._popupElement.classList.remove("modal-opened");
+    document.removeEventListener("keydown", this._handleEscClose);
+    this._popupElement.classList.remove("modal_opened");
   }
 
-  _handleEscape(e) {
+  _handleEscClose(e) {
     if (e.key === "Escape") {
       this.close();
     }
   }
 
   setEventListeners() {
-    //add click event
     this._button.addEventListener("click", () => {
-      this._popupElement.classList.add("modal_opened");
+      this.open();
     });
   }
 }
