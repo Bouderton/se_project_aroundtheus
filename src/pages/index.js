@@ -131,7 +131,7 @@ initialCards.forEach((cardData) => {
 });
 
 addNewCardBtn.addEventListener("click", () => {
-  openPopup(addCardModal);
+  // openPopup(addCardModal);
 });
 
 profileEditBtn.addEventListener("click", () => {
