@@ -1,5 +1,5 @@
-class UserInfo {
-  constructor() {}
+export default class UserInfo {
+  constructor(info) {}
 
   getUserInfo() {}
 

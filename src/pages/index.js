@@ -1,6 +1,7 @@
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
 import "../pages/index.css";
 
 const initialCards = [
@@ -98,7 +99,6 @@ function handleImageClick(card) {
   modalImage.src = card.link;
   modalImage.alt = card.name;
   previewCaption.textContent = card.name;
-  newPopupForm.open();
   // openPopup(previewModal);
 }
 
@@ -110,13 +110,6 @@ function createCard(cardData) {
 // EVENTS
 
 addCardModal.addEventListener("submit", handleCardSubmit);
-
-profileEditBtn.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileSubtitleInput.value = profileSubtitle.textContent;
-  editProfileFormValidator.resetValidation();
-  newPopupForm.open();
-});
 
 profileForm.addEventListener("submit", handleProfileEditSubmit);
 
@@ -132,7 +125,7 @@ addNewCardBtn.addEventListener("click", () => {
 profileEditBtn.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileSubtitleInput.value = profileSubtitle.textContent;
-  // openPopup(profileEditModal);
+  newPopupForm.open();
 });
 
 // function handleEscape(evt) {
@@ -159,3 +152,5 @@ editProfileFormValidator.enableValidation();
 
 const newPopupForm = new PopupWithForm("#profile-edit-modal");
 newPopupForm.setEventListeners();
+
+const editProfileForm = new UserInfo("#profi");
