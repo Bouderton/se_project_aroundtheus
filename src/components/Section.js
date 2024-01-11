@@ -1,7 +1,7 @@
 class Section {
   constructor({ items, renderer }) {
-    this.items = items;
-    this.renderer = renderer;
+    this._items = items;
+    this._renderer = renderer;
   }
   renderItems() {
     this._items.forEach((data) => {

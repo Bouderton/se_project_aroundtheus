@@ -1,6 +1,6 @@
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
-import Popup from "../components/Popup.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 import "../pages/index.css";
 
 const initialCards = [
@@ -103,6 +103,7 @@ function handleImageClick(card) {
   modalImage.src = card.link;
   modalImage.alt = card.name;
   previewCaption.textContent = card.name;
+  newPopupForm.open();
   // openPopup(previewModal);
 }
 
@@ -170,5 +171,5 @@ addCardFormValidator.enableValidation();
 const editProfileFormValidator = new FormValidator(config, profileForm);
 editProfileFormValidator.enableValidation();
 
-const newFormPopup = new Popup(profileEditModal);
-newFormPopup.open();
+const newPopupForm = new PopupWithForm(profileEditModal);
+newPopupForm.setEventListeners();
