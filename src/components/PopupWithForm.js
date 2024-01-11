@@ -12,13 +12,7 @@ export default class PopupWithForm extends Popup {
   }
 
   close() {
-    this._popupForm.reset();
+    // this._popupForm.reset();
     super.close();
   }
 }
-
-//index.js
-
-// const formPopup = new PopupWithForm("#profile-edit-modal", () => {});
-// formPopup.open();
-// formPopup.close();

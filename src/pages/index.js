@@ -115,7 +115,7 @@ profileEditBtn.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileSubtitleInput.value = profileSubtitle.textContent;
   editProfileFormValidator.resetValidation();
-  // openPopup(profileEditModal);
+  newPopupForm.open();
 });
 
 profileForm.addEventListener("submit", handleProfileEditSubmit);
