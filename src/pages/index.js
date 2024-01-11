@@ -30,11 +30,6 @@ const initialCards = [
   },
 ];
 
-const cardData = {
-  name: "Yosmite",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};
-
 // Profile Variables
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
