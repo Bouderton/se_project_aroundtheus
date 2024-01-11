@@ -171,5 +171,5 @@ addCardFormValidator.enableValidation();
 const editProfileFormValidator = new FormValidator(config, profileForm);
 editProfileFormValidator.enableValidation();
 
-const newPopupForm = new PopupWithForm(profileEditModal);
+const newPopupForm = new PopupWithForm("#profile-edit-modal", handleEscape);
 newPopupForm.setEventListeners();
