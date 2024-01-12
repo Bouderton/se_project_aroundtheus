@@ -1,5 +1,8 @@
 export default class UserInfo {
-  constructor(info) {}
+  constructor(title, subtitle) {
+    this._title = title;
+    this._subtitle = subtitle;
+  }
 
   getUserInfo() {}
 

@@ -123,8 +123,8 @@ addNewCardBtn.addEventListener("click", () => {
 });
 
 profileEditBtn.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileSubtitleInput.value = profileSubtitle.textContent;
+  // profileTitleInput.value = profileTitle.textContent;
+  // profileSubtitleInput.value = profileSubtitle.textContent;
   newPopupForm.open();
 });
 
@@ -153,4 +153,4 @@ editProfileFormValidator.enableValidation();
 const newPopupForm = new PopupWithForm("#profile-edit-modal");
 newPopupForm.setEventListeners();
 
-const editProfileForm = new UserInfo("#profi");
+const editProfileForm = new UserInfo(profileTitleInput, profileSubtitleInput);
