@@ -61,7 +61,6 @@ const addNewCardBtn = document.querySelector("#add-card-button");
 const closeBtns = document.querySelectorAll(".modal__close-button");
 
 closeBtns.forEach((button) => {
-  const popup = button.closest(".modal");
   button.addEventListener("click", () => newPopupForm.close());
 });
 
@@ -126,6 +125,7 @@ profileEditBtn.addEventListener("click", () => {
   // profileTitleInput.value = profileTitle.textContent;
   // profileSubtitleInput.value = profileSubtitle.textContent;
   newPopupForm.open();
+  newPopupForm.setEventListeners();
 });
 
 // function handleEscape(evt) {
@@ -153,4 +153,6 @@ editProfileFormValidator.enableValidation();
 const newPopupForm = new PopupWithForm("#profile-edit-modal");
 newPopupForm.setEventListeners();
 
-const editProfileForm = new UserInfo(profileTitleInput, profileSubtitleInput);
+// const editProfileForm = new UserInfo(".profile__title", ".profile__subtitle");
+// editProfileForm.getUserInfo();
+// editProfileForm.setUserInfo(profileTitleInput, profileSubtitleInput);
