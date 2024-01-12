@@ -153,6 +153,6 @@ editProfileFormValidator.enableValidation();
 const newPopupForm = new PopupWithForm("#profile-edit-modal");
 newPopupForm.setEventListeners();
 
-// const editProfileForm = new UserInfo(".profile__title", ".profile__subtitle");
-// editProfileForm.getUserInfo();
-// editProfileForm.setUserInfo(profileTitleInput, profileSubtitleInput);
+const editProfileForm = new UserInfo(".profile__title", ".profile__subtitle");
+editProfileForm.getUserInfo();
+editProfileForm.setUserInfo(profileTitleInput, profileSubtitleInput);
