@@ -2,6 +2,7 @@ import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+import Section from "../components/Section.js";
 import "../pages/index.css";
 
 const initialCards = [
@@ -122,8 +123,9 @@ addNewCardBtn.addEventListener("click", () => {
 });
 
 profileEditBtn.addEventListener("click", () => {
-  // profileTitleInput.value = profileTitle.textContent;
-  // profileSubtitleInput.value = profileSubtitle.textContent;
+  const { name, description } = editProfileForm.getUserInfo();
+  profileTitleInput.value = name;
+  profileSubtitleInput.value = description;
   newPopupForm.open();
   newPopupForm.setEventListeners();
 });
@@ -153,6 +155,10 @@ editProfileFormValidator.enableValidation();
 const newPopupForm = new PopupWithForm("#profile-edit-modal");
 newPopupForm.setEventListeners();
 
-const editProfileForm = new UserInfo(".profile__title", ".profile__subtitle");
-editProfileForm.getUserInfo();
-editProfileForm.setUserInfo(profileTitleInput, profileSubtitleInput);
+const editProfileForm = new UserInfo({
+  title: ".profile__title",
+  subtitle: ".profile__subtitle",
+});
+
+// FOR SUBMITTING THE FORM
+// editProfileForm.setUserInfo(profileTitleInput, profileSubtitleInput);

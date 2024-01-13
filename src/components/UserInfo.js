@@ -1,5 +1,5 @@
 export default class UserInfo {
-  constructor(title, subtitle) {
+  constructor({ title, subtitle }) {
     this._title = document.querySelector(title);
     this._subtitle = document.querySelector(subtitle);
   }
@@ -11,7 +11,7 @@ export default class UserInfo {
     };
   }
 
-  setUserInfo(name, description) {
+  setUserInfo({ name, description }) {
     this._title.textContent = name;
     this._subtitle.textContent = description;
   }
