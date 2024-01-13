@@ -1,8 +1,11 @@
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import Popup from "../components/Popup.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
+import PopupWithImages from "../components/PopupWithImages.js";
+
 import "../pages/index.css";
 
 const initialCards = [
@@ -99,7 +102,6 @@ function handleImageClick(card) {
   modalImage.src = card.link;
   modalImage.alt = card.name;
   previewCaption.textContent = card.name;
-  // openPopup(previewModal);
 }
 
 function createCard(cardData) {
@@ -119,7 +121,7 @@ initialCards.forEach((cardData) => {
 });
 
 addNewCardBtn.addEventListener("click", () => {
-  // openPopup(addCardModal);
+  // imagePreviewPopup.open();
 });
 
 profileEditBtn.addEventListener("click", () => {
@@ -154,6 +156,8 @@ editProfileFormValidator.enableValidation();
 
 const newPopupForm = new PopupWithForm("#profile-edit-modal");
 newPopupForm.setEventListeners();
+
+const imagePreviewPopup = new PopupWithImages("#preview-modal");
 
 const editProfileForm = new UserInfo({
   title: ".profile__title",
