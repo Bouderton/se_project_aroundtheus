@@ -64,9 +64,9 @@ const profileEditBtn = document.querySelector("#profile-edit-button");
 const addNewCardBtn = document.querySelector("#add-card-button");
 const closeBtns = document.querySelectorAll(".modal__close-button");
 
-closeBtns.forEach((button) => {
-  button.addEventListener("click", () => newPopupForm.close());
-});
+// closeBtns.forEach((button) => {
+//   button.addEventListener("click", () => newPopupForm.close());
+// });
 
 // FUNCTIONS
 
@@ -121,7 +121,7 @@ initialCards.forEach((cardData) => {
 });
 
 addNewCardBtn.addEventListener("click", () => {
-  // imagePreviewPopup.open();
+  addImageForm.open();
 });
 
 profileEditBtn.addEventListener("click", () => {
@@ -157,12 +157,13 @@ editProfileFormValidator.enableValidation();
 const newPopupForm = new PopupWithForm("#profile-edit-modal");
 newPopupForm.setEventListeners();
 
-const imagePreviewPopup = new PopupWithImages("#preview-modal");
-
 const editProfileForm = new UserInfo({
   title: ".profile__title",
   subtitle: ".profile__subtitle",
 });
+
+const addImageForm = new PopupWithForm("#add-card-modal");
+addImageForm.setEventListeners();
 
 // FOR SUBMITTING THE FORM
 // editProfileForm.setUserInfo(profileTitleInput, profileSubtitleInput);

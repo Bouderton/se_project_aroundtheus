@@ -1,7 +1,8 @@
 export default class Popup {
   constructor({ popupSelector }) {
     this._popupElement = document.querySelector(popupSelector);
-    this._button = document.querySelector("#profile-edit-button");
+    this._editButton = document.querySelector("#profile-edit-button");
+    this._cardButton = document.querySelector("#add-card-button");
   }
   open() {
     this._popupElement.classList.add("modal_opened");
@@ -20,7 +21,7 @@ export default class Popup {
   };
 
   setEventListeners() {
-    this._button.addEventListener("click", () => {
+    this._editButton.addEventListener("click", () => {
       this.open();
     });
   }
