@@ -2,7 +2,6 @@ export default class Popup {
   constructor({ popupSelector }) {
     this._popupElement = document.querySelector(popupSelector);
     this._editButton = document.querySelector("#profile-edit-button");
-    this._cardButton = document.querySelector("#add-card-button");
   }
   open() {
     this._popupElement.classList.add("modal_opened");

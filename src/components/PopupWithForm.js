@@ -4,6 +4,7 @@ export default class PopupWithForm extends Popup {
     super({ popupSelector });
     this._popupForm = this._popupElement.querySelector(".modal__form");
     this._handleFormSubmit = handleFormSubmit;
+    this._closeButton = document.querySelectorAll(".modal__close-button");
   }
 
   open() {
@@ -11,7 +12,7 @@ export default class PopupWithForm extends Popup {
   }
 
   close() {
-    // this._popupForm.reset();
+    this._popupForm.reset();
     super.close();
   }
 
@@ -21,7 +22,7 @@ export default class PopupWithForm extends Popup {
 
   setEventListeners() {
     this._popupForm.addEventListener("submit", (e) => {
-      super.close();
+      this.close();
       e.preventDefault();
     });
 
@@ -29,6 +30,10 @@ export default class PopupWithForm extends Popup {
       if (e.target.classList.contains("modal_opened")) {
         this.close();
       }
+    });
+
+    this._closeButton.forEach((button) => {
+      button.addEventListener("click", () => this.close());
     });
   }
 }
