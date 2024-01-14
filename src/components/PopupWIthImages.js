@@ -21,7 +21,7 @@ export default class PopWithImages extends Popup {
 
   setEventListeners() {
     this._modalImage.addEventListener("click", () => {
-      console.log("balls");
+      console.log("card");
     });
   }
 }
