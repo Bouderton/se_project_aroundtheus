@@ -27,6 +27,12 @@ export default class PopWithImages extends Popup {
     this._previewCloseBtn.addEventListener("click", () => {
       this.close();
     });
+
+    this._popupElement.addEventListener("click", (e) => {
+      if (e.target.classList.contains("modal_opened")) {
+        this.close();
+      }
+    });
   }
 }
 // DO THIS ^^^^
