@@ -5,6 +5,7 @@ export default class PopWithImages extends Popup {
     super({ popupSelector });
     this._modalImage = document.querySelector(".modal__image");
     this._previewCaption = document.querySelector(".modal__caption");
+    this._previewCloseBtn = document.querySelector("#preview-close-button");
   }
 
   open({ name, link }) {
@@ -20,7 +21,11 @@ export default class PopWithImages extends Popup {
 
   setEventListeners() {
     this._modalImage.addEventListener("click", () => {
-      console.log("card");
+      this.open();
+    });
+
+    this._previewCloseBtn.addEventListener("click", () => {
+      this.close();
     });
   }
 }
