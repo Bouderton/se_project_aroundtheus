@@ -5,7 +5,6 @@ export default class PopWithImages extends Popup {
     super({ popupSelector });
     this._modalImage = document.querySelector(".modal__image");
     this._previewCaption = document.querySelector(".modal__caption");
-    console.log(this._modalImage);
   }
 
   open({ name, link }) {
