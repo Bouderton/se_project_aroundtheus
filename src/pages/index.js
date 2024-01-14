@@ -84,9 +84,10 @@ function handleCardSubmit(e) {
 }
 
 function handleImageClick(card) {
-  modalImage.src = card.link;
-  modalImage.alt = card.name;
-  previewCaption.textContent = card.name;
+  // modalImage.src = card.link;
+  // modalImage.alt = card.name;
+  // previewCaption.textContent = card.name;
+  previewImagePopup.open();
 }
 
 function createCard(cardData) {
@@ -144,6 +145,7 @@ const addImageForm = new PopupWithForm("#add-card-modal");
 addImageForm.setEventListeners();
 
 const previewImagePopup = new PopupWithImages("#preview-modal");
+previewImagePopup.setEventListeners();
 
 // FOR SUBMITTING THE FORM
 // editProfileForm.setUserInfo(profileTitleInput, profileSubtitleInput);
