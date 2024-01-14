@@ -143,5 +143,7 @@ const editProfileForm = new UserInfo({
 const addImageForm = new PopupWithForm("#add-card-modal");
 addImageForm.setEventListeners();
 
+const previewImagePopup = new PopupWithImages("#preview-modal");
+
 // FOR SUBMITTING THE FORM
 // editProfileForm.setUserInfo(profileTitleInput, profileSubtitleInput);
