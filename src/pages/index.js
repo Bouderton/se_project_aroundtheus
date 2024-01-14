@@ -87,7 +87,7 @@ function handleImageClick(card) {
   // modalImage.src = card.link;
   // modalImage.alt = card.name;
   // previewCaption.textContent = card.name;
-  previewImagePopup.open();
+  previewImagePopup.open(card);
 }
 
 function createCard(cardData) {
