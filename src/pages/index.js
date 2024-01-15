@@ -70,7 +70,7 @@ function handleProfileEditSubmit(e) {
   // profileSubtitle.textContent = profileSubtitleInput.value;
   // debugger;
   newPopupForm.setEventListeners();
-  newUserInfo.setUserInfo("#profile-title-input", "#profile-subtitle-input");
+  editProfileForm.setUserInfo({ profileTitleInput, profileSubtitleInput });
 }
 
 function handleCardSubmit(e) {
@@ -148,10 +148,10 @@ addImageForm.setEventListeners();
 const previewImagePopup = new PopupWithImages("#preview-modal");
 previewImagePopup.setEventListeners();
 
-const newUserInfo = new UserInfo(
-  "#profile-title-input",
-  "#profile-subtitle-input"
-);
+// const newUserInfo = new UserInfo(
+//   "#profile-title-input",
+//   "#profile-subtitle-input"
+// );
 
 // FOR SUBMITTING THE FORM
 // editProfileForm.setUserInfo(profileTitleInput, profileSubtitleInput);
