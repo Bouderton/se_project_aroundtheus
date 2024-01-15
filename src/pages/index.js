@@ -65,7 +65,7 @@ const closeBtns = document.querySelectorAll(".modal__close-button");
 
 // FUNCTIONS
 
-function handleProfileEditSubmit(e) {
+function handleProfileEditSubmit(data) {
   // profileTitle.textContent = profileTitleInput.value;
   // profileSubtitle.textContent = profileSubtitleInput.value;
   // debugger;
@@ -134,7 +134,10 @@ addCardFormValidator.enableValidation();
 const editProfileFormValidator = new FormValidator(config, profileForm);
 editProfileFormValidator.enableValidation();
 
-const newPopupForm = new PopupWithForm("#profile-edit-modal");
+const newPopupForm = new PopupWithForm(
+  "#profile-edit-modal",
+  handleProfileEditSubmit
+);
 newPopupForm.setEventListeners();
 
 const editProfileForm = new UserInfo({
@@ -148,10 +151,16 @@ addImageForm.setEventListeners();
 const previewImagePopup = new PopupWithImages("#preview-modal");
 previewImagePopup.setEventListeners();
 
-// const newUserInfo = new UserInfo(
-//   "#profile-title-input",
-//   "#profile-subtitle-input"
-// );
+// const newCardSection = new Section({
+//   items: initialCards,
+//   renderer: (item) => {}
+// });
 
 // FOR SUBMITTING THE FORM
 // editProfileForm.setUserInfo(profileTitleInput, profileSubtitleInput);
+
+// this._handleFormSubmit(this._getInputValues())
+
+// function handleProfileEditSubmit(data) { .. }
+
+// setUserInfo(data)
