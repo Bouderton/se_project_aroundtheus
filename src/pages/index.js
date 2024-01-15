@@ -78,7 +78,7 @@ function handleCardSubmit(e) {
   const link = cardUrlInput.value;
   const cardElement = createCard({ name, link });
   cardsWrap.prepend(cardElement);
-  closePopup(addCardModal);
+  addImageForm.close();
   e.target.reset();
   addCardFormValidator.resetValidation();
 }
