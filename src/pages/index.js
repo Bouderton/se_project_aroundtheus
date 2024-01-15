@@ -66,10 +66,11 @@ const closeBtns = document.querySelectorAll(".modal__close-button");
 // FUNCTIONS
 
 function handleProfileEditSubmit(e) {
-  e.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileSubtitle.textContent = profileSubtitleInput.value;
-  newPopupForm.close();
+  // profileTitle.textContent = profileTitleInput.value;
+  // profileSubtitle.textContent = profileSubtitleInput.value;
+  // debugger;
+  newPopupForm.setEventListeners();
+  newUserInfo.setUserInfo("#profile-title-input", "#profile-subtitle-input");
 }
 
 function handleCardSubmit(e) {
@@ -146,6 +147,11 @@ addImageForm.setEventListeners();
 
 const previewImagePopup = new PopupWithImages("#preview-modal");
 previewImagePopup.setEventListeners();
+
+const newUserInfo = new UserInfo(
+  "#profile-title-input",
+  "#profile-subtitle-input"
+);
 
 // FOR SUBMITTING THE FORM
 // editProfileForm.setUserInfo(profileTitleInput, profileSubtitleInput);
