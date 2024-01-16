@@ -32,6 +32,18 @@ const initialCards = [
     name: "Lago di Braies",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
+  {
+    name: "Mt Everest",
+    link: "https://cdn.britannica.com/17/83817-050-67C814CD/Mount-Everest.jpg",
+  },
+  {
+    name: "Great Wall of China",
+    link: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/The_Great_Wall_of_China_at_Jinshanling-edit.jpg/1200px-The_Great_Wall_of_China_at_Jinshanling-edit.jpg",
+  },
+  {
+    name: "Grand Canyon",
+    link: "https://www.amtrakvacations.com/sites/amtrak/files/styles/hero/public/media/images/grand-canyon_670151752-web.jpg?h=f790d5ec&itok=PmHMpYK5",
+  },
 ];
 
 // Profile Variables
@@ -74,13 +86,12 @@ function handleProfileEditSubmit(data) {
 }
 
 function handleCardSubmit(e) {
-  e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
+  newCardSection.renderItems();
   const cardElement = createCard({ name, link });
-  cardsWrap.prepend(cardElement);
+  newCardSection.addItem(cardElement);
   addImageForm.close();
-  e.target.reset();
   addCardFormValidator.resetValidation();
 }
 
@@ -144,16 +155,22 @@ const profileUserInfo = new UserInfo({
   subtitle: ".profile__subtitle",
 });
 
-const addImageForm = new PopupWithForm("#add-card-modal");
+const addImageForm = new PopupWithForm("#add-card-modal", handleCardSubmit);
 addImageForm.setEventListeners();
 
 const previewImagePopup = new PopupWithImages("#preview-modal");
 previewImagePopup.setEventListeners();
 
-// const newCardSection = new Section({
-//   items: initialCards,
-//   renderer: (item) => {}
-// });
+const newCardSection = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const card = new Card(cardData, "#card-template", handleImageClick);
+      return card.addItem(item);
+    },
+  },
+  cardsWrap
+);
 
 // FOR SUBMITTING THE FORM
 // profileUserInfo.setUserInfo(profileTitleInput, profileSubtitleInput);
