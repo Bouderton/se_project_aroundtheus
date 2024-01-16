@@ -3,7 +3,7 @@ import Card from "../components/Card.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
-import PopupWithImages from "../components/PopupWithImages.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 
 import "../pages/index.css";
 
@@ -109,6 +109,10 @@ profileEditBtn.addEventListener("click", () => {
   newPopupForm.open();
 });
 
+modalImage.addEventListener("click", () => {
+  previewImagePopup.open();
+});
+
 const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__form-input",
@@ -138,7 +142,7 @@ const profileUserInfo = new UserInfo({
 const addImageForm = new PopupWithForm("#add-card-modal", handleCardSubmit);
 addImageForm.setEventListeners();
 
-const previewImagePopup = new PopupWithImages("#preview-modal");
+const previewImagePopup = new PopupWithImage("#preview-modal");
 previewImagePopup.setEventListeners();
 
 const newCardSection = new Section(

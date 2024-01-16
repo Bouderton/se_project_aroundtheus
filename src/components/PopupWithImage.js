@@ -1,6 +1,6 @@
 import Popup from "./Popup.js";
 
-export default class PopWithImages extends Popup {
+export default class PopWithImage extends Popup {
   constructor(popupSelector) {
     super({ popupSelector });
     this._modalImage = document.querySelector(".modal__image");
@@ -16,10 +16,6 @@ export default class PopWithImages extends Popup {
   }
 
   setEventListeners() {
-    this._modalImage.addEventListener("click", () => {
-      this.open();
-    });
-
     this._previewCloseBtn.addEventListener("click", () => {
       this.close();
     });
