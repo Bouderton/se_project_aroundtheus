@@ -85,12 +85,12 @@ function handleProfileEditSubmit(data) {
   profileUserInfo.setUserInfo(data);
 }
 
-function handleCardSubmit(e) {
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
-  newCardSection.renderItems();
-  const cardElement = createCard({ name, link });
-  newCardSection.addItem(cardElement);
+function handleCardSubmit({ title: name, subtitle: link }) {
+  // const name = cardTitleInput.value;
+  // const link = cardUrlInput.value;
+  // newCardSection.renderItems();
+  // const cardElement = createCard({ name, link });
+  newCardSection.addItem({ name, link });
   addImageForm.close();
   addCardFormValidator.resetValidation();
 }
@@ -113,10 +113,10 @@ function createCard(cardData) {
 
 // profileForm.addEventListener("submit", handleProfileEditSubmit);
 
-initialCards.forEach((cardData) => {
-  const cardElement = createCard(cardData);
-  cardsWrap.append(cardElement);
-});
+// initialCards.forEach((cardData) => {
+//   const cardElement = createCard(cardData);
+//   cardsWrap.append(cardElement);
+// });
 
 addNewCardBtn.addEventListener("click", () => {
   addImageForm.open();
@@ -164,19 +164,9 @@ previewImagePopup.setEventListeners();
 const newCardSection = new Section(
   {
     items: initialCards,
-    renderer: (item) => {
-      const card = new Card(cardData, "#card-template", handleImageClick);
-      return card.addItem(item);
-    },
+    renderer: createCard,
   },
   cardsWrap
 );
 
-// FOR SUBMITTING THE FORM
-// profileUserInfo.setUserInfo(profileTitleInput, profileSubtitleInput);
-
-// this._handleFormSubmit(this._getInputValues())
-
-// function handleProfileEditSubmit(data) { .. }
-
-// setUserInfo(data)
+newCardSection.renderItems();

@@ -9,7 +9,8 @@ export default class Section {
       this.addItem(data);
     });
   }
-  addItem(element) {
+  addItem(data) {
+    const element = this._renderer(data);
     this._container.prepend(element);
   }
 }
