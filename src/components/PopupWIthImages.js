@@ -15,10 +15,6 @@ export default class PopWithImages extends Popup {
     super.open();
   }
 
-  close() {
-    super.close();
-  }
-
   setEventListeners() {
     this._modalImage.addEventListener("click", () => {
       this.open();
