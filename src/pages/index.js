@@ -66,11 +66,11 @@ const closeBtns = document.querySelectorAll(".modal__close-button");
 // FUNCTIONS
 
 function handleProfileEditSubmit(data) {
+  // debugger;
   // profileTitle.textContent = profileTitleInput.value;
   // profileSubtitle.textContent = profileSubtitleInput.value;
   // debugger;
-  newPopupForm.setEventListeners();
-  editProfileForm.setUserInfo({ profileTitleInput, profileSubtitleInput });
+  profileUserInfo.setUserInfo(data);
 }
 
 function handleCardSubmit(e) {
@@ -98,9 +98,9 @@ function createCard(cardData) {
 
 // EVENT LISTENERS
 
-addCardModal.addEventListener("submit", handleCardSubmit);
+// addCardModal.addEventListener("submit", handleCardSubmit);
 
-profileForm.addEventListener("submit", handleProfileEditSubmit);
+// profileForm.addEventListener("submit", handleProfileEditSubmit);
 
 initialCards.forEach((cardData) => {
   const cardElement = createCard(cardData);
@@ -112,11 +112,10 @@ addNewCardBtn.addEventListener("click", () => {
 });
 
 profileEditBtn.addEventListener("click", () => {
-  const { name, description } = editProfileForm.getUserInfo();
+  const { name, description } = profileUserInfo.getUserInfo();
   profileTitleInput.value = name;
   profileSubtitleInput.value = description;
   newPopupForm.open();
-  newPopupForm.setEventListeners();
 });
 
 const config = {
@@ -140,7 +139,7 @@ const newPopupForm = new PopupWithForm(
 );
 newPopupForm.setEventListeners();
 
-const editProfileForm = new UserInfo({
+const profileUserInfo = new UserInfo({
   title: ".profile__title",
   subtitle: ".profile__subtitle",
 });
@@ -157,7 +156,7 @@ previewImagePopup.setEventListeners();
 // });
 
 // FOR SUBMITTING THE FORM
-// editProfileForm.setUserInfo(profileTitleInput, profileSubtitleInput);
+// profileUserInfo.setUserInfo(profileTitleInput, profileSubtitleInput);
 
 // this._handleFormSubmit(this._getInputValues())
 
