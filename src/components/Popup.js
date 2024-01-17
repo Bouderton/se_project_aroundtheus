@@ -3,6 +3,7 @@ export default class Popup {
     this._popupElement = document.querySelector(popupSelector);
     this._editButton = document.querySelector("#profile-edit-button");
     this._closeButton = document.querySelector(".modal__close-button");
+    console.log(this._closeButton);
   }
   open() {
     this._popupElement.classList.add("modal_opened");
