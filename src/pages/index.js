@@ -97,6 +97,10 @@ function createCard(cardData) {
 
 // EVENT LISTENERS
 
+closeBtns.forEach((button) => {
+  button.addEventListener("click", () => this.close());
+});
+
 addNewCardBtn.addEventListener("click", () => {
   addCardFormValidator.resetValidation();
   addImageForm.open();

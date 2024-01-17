@@ -5,7 +5,6 @@ export default class PopWithImage extends Popup {
     super({ popupSelector });
     this._modalImage = document.querySelector(".modal__image");
     this._previewCaption = document.querySelector(".modal__caption");
-    this._previewCloseBtn = document.querySelector("#preview-close-button");
   }
 
   open({ name, link }) {
@@ -13,16 +12,6 @@ export default class PopWithImage extends Popup {
     this._modalImage.alt = name;
     this._previewCaption.textContent = name;
     super.open();
-  }
-
-  setEventListeners() {
-    this._previewCloseBtn.addEventListener("click", () => {
-      this.close();
-    });
-
-    this._popupElement.addEventListener("mousedown", () => {
-      this.close();
-    });
   }
 }
 // DO THIS ^^^^
