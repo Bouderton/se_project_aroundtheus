@@ -1,4 +1,4 @@
-class Api {
+export default class Api {
   constructor(options) {}
 
   getInitialCards() {}
@@ -9,7 +9,7 @@ class Api {
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-    authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6",
+    authorization: "250daeea-0b63-48f9-a4b3-e529116433c4",
     "Content-Type": "application/json",
   },
 });

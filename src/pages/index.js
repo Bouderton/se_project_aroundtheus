@@ -1,13 +1,4 @@
-fetch("https://around-api.en.tripleten-services.com/v1", {
-  headers: {
-    authorization: "250daeea-0b63-48f9-a4b3-e529116433c4",
-  },
-})
-  .then((res) => res.json())
-  .then((result) => {
-    console.log(result);
-  });
-
+import Api from "../components/Api.js";
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import Popup from "../components/Popup.js";
@@ -17,6 +8,16 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 
 import "../pages/index.css";
+
+fetch("https://around-api.en.tripleten-services.com/v1", {
+  headers: {
+    authorization: "250daeea-0b63-48f9-a4b3-e529116433c4",
+  },
+})
+  .then((res) => res.json())
+  .then((result) => {
+    console.log(result);
+  });
 
 const initialCards = [
   {
@@ -162,3 +163,11 @@ const newCardSection = new Section(
 );
 
 newCardSection.renderItems();
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "250daeea-0b63-48f9-a4b3-e529116433c4",
+    "Content-Type": "application/json",
+  },
+});
