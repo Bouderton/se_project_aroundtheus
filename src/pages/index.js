@@ -1,3 +1,13 @@
+fetch("https://around-api.en.tripleten-services.com/v1", {
+  headers: {
+    authorization: "250daeea-0b63-48f9-a4b3-e529116433c4",
+  },
+})
+  .then((res) => res.json())
+  .then((result) => {
+    console.log(result);
+  });
+
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import Popup from "../components/Popup.js";
