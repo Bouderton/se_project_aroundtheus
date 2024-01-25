@@ -64,6 +64,16 @@
   line-height: normal;
 }
 
+.modal__yes-heading {
+  margin: 0 0 38px;
+  color: #000;
+  font-family: "Inter", Arial, serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
 .modal__form {
   margin: 0;
 }
@@ -98,6 +108,7 @@
 .modal__save-button {
   margin: 18px 0 0;
   width: 100%;
+  padding: 0;
   background-color: #000;
   border: none;
   height: 50px;
