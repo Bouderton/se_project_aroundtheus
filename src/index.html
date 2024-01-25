@@ -32,7 +32,8 @@
           <img
             class="profile__image"
             src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="Profile Photo"
+            alt="Profile Image"
+            id="profile-image"
           />
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
@@ -152,6 +153,26 @@
           </fieldset>
         </form>
       </div>
+    </div>
+
+    <!--DELETE CONFIRM MODAL-->
+
+    <div class="modal modal_opened" id="delete-confirm">
+      <div class="modal__container">
+        <button
+          class="modal__close-button"
+          id="add-card-close-button"
+          type="button"
+        ></button>
+        <p class="modal__heading">Are you sure?</p>
+        <button class="modal__save-button">Yes</button>
+      </div>
+    </div>
+
+    <!--PROFILE PICTURE EDIT MODAL-->
+
+    <div class="modal" id="profile-image-modal">
+      <div class="modal__container"></div>
     </div>
 
     <!-- Preview Image Modal -->

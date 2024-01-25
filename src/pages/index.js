@@ -6,18 +6,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
-
 import "../pages/index.css";
-
-fetch("https://around-api.en.tripleten-services.com/v1", {
-  headers: {
-    authorization: "250daeea-0b63-48f9-a4b3-e529116433c4",
-  },
-})
-  .then((res) => res.json())
-  .then((result) => {
-    console.log(result);
-  });
 
 const initialCards = [
   {
@@ -63,6 +52,8 @@ const initialCards = [
 const profileTitleInput = document.querySelector("#profile-title-input");
 const profileSubtitleInput = document.querySelector("#profile-subtitle-input");
 const profileForm = document.forms["modal-form"];
+const profileImage = document.querySelector("#profile-image");
+console.log(profileImage);
 
 // Card Variables
 
@@ -171,3 +162,10 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
+
+api
+  .getInitialCards()
+  .then((result) => {})
+  .catch((err) => {
+    console.error(err);
+  });

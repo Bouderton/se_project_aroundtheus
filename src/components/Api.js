@@ -1,15 +1,19 @@
 export default class Api {
   constructor(options) {}
 
-  getInitialCards() {}
+  getInitialCards() {
+    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+      headers: {
+        authorization: "250daeea-0b63-48f9-a4b3-e529116433c4",
+      },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    });
+  }
 
   //other methods
 }
 
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "250daeea-0b63-48f9-a4b3-e529116433c4",
-    "Content-Type": "application/json",
-  },
-});
+//set up fetches for each request
