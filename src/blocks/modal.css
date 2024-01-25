@@ -97,7 +97,7 @@
 
 .modal__save-button {
   margin: 18px 0 0;
-  padding: 0;
+  width: 100%;
   background-color: #000;
   border: none;
   height: 50px;

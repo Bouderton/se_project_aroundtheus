@@ -53,7 +53,6 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const profileSubtitleInput = document.querySelector("#profile-subtitle-input");
 const profileForm = document.forms["modal-form"];
 const profileImage = document.querySelector("#profile-image");
-console.log(profileImage);
 
 // Card Variables
 
