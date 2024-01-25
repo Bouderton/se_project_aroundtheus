@@ -171,8 +171,17 @@
 
     <!--PROFILE PICTURE EDIT MODAL-->
 
-    <div class="modal" id="profile-image-modal">
-      <div class="modal__container"></div>
+    <div class="modal modal_opened" id="profile-image-modal">
+      <div class="modal__container">
+        <button class="modal__close-button"></button>
+        <p class="modal__heading">Change profile picture</p>
+        <form class="modal__form">
+          <fieldset class="modal__form-fieldset">
+            <input class="modal__form-input" placeholder="Image URL" required />
+            <button class="modal__save-button">Save</button>
+          </fieldset>
+        </form>
+      </div>
     </div>
 
     <!-- Preview Image Modal -->
