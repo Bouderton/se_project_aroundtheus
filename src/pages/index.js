@@ -6,6 +6,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import PopupConfirm from "../components/Popup.js";
 import "../pages/index.css";
 
 const initialCards = [
@@ -54,6 +55,7 @@ const profileSubtitleInput = document.querySelector("#profile-subtitle-input");
 const profileForm = document.forms["modal-form"];
 // const profileImage = document.querySelector("#profile-image");
 const editImageForm = document.querySelector("#image-edit-form");
+const confirmDelete = document.querySelector("#delete-confirm");
 
 // Card Variables
 
