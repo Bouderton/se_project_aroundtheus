@@ -52,7 +52,8 @@ const initialCards = [
 const profileTitleInput = document.querySelector("#profile-title-input");
 const profileSubtitleInput = document.querySelector("#profile-subtitle-input");
 const profileForm = document.forms["modal-form"];
-const profileImage = document.querySelector("#profile-image");
+// const profileImage = document.querySelector("#profile-image");
+const editImageForm = document.querySelector("#image-edit-form");
 
 // Card Variables
 
@@ -120,6 +121,11 @@ const config = {
   inputErrorClass: "modal__error",
   errorClass: "modal__form-input_type_error",
 };
+
+//New Classes
+
+const profileEditImage = new FormValidator(config, editImageForm);
+profileEditImage.enableValidation();
 
 const addCardFormValidator = new FormValidator(config, addCardForm);
 addCardFormValidator.enableValidation();

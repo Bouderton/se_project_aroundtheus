@@ -175,10 +175,13 @@
       <div class="modal__container">
         <button class="modal__close-button"></button>
         <p class="modal__heading">Change profile picture</p>
-        <form class="modal__form">
+        <form class="modal__form" id="image-edit-form">
           <fieldset class="modal__form-fieldset">
             <input class="modal__form-input" placeholder="Image URL" required />
-            <button class="modal__save-button">Save</button>
+            <span class="modal__error" id="card-title-input-error"></span>
+            <button class="modal__save-button modal__save-button_disabled">
+              Save
+            </button>
           </fieldset>
         </form>
       </div>
