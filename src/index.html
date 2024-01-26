@@ -29,12 +29,20 @@
         <!-- PROFILE SECTION-->
 
         <section class="profile">
-          <img
-            class="profile__image"
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="Profile Image"
-            id="profile-image"
-          />
+          <div class="profile__image-container">
+            <img
+              class="profile__image"
+              src="<%=require('./images/jacques-cousteau.jpg')%>"
+              alt="Profile Image"
+              id="profile-image"
+            />
+            <img
+              class="profile__pencil"
+              src="<%=require('./images/pencil-vector.svg')%>"
+              alt="Profile Pencil Logo"
+              id="profile-pencil"
+            />
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
