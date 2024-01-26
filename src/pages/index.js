@@ -92,7 +92,12 @@ function handleImageClick(card) {
 }
 
 function createCard(cardData) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
+  const card = new Card(
+    cardData,
+    "#card-template",
+    handleImageClick,
+    confirmDelete
+  );
   return card.getView();
 }
 

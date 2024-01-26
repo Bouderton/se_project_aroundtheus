@@ -1,9 +1,10 @@
 export default class Card {
-  constructor({ name, link }, cardTemplate, handleImageClick) {
+  constructor({ name, link }, cardTemplate, handleImageClick, confirmDelete) {
     this.name = name;
     this.link = link;
     this._cardTemplate = cardTemplate;
     this._handleImageClick = handleImageClick;
+    this._confirmDelete = confirmDelete;
   }
 
   _setEventListeners() {
@@ -12,12 +13,18 @@ export default class Card {
     });
 
     this._trashBtn.addEventListener("click", () => {
-      this._handleDeleteCard();
+      // this._handleDeleteCard();
+      console.log("deez nuts");
+      this._openConfirm(this._confirmDelete);
     });
 
     this._cardImageEl.addEventListener("click", () => {
       this._handleImageClick({ name: this.name, link: this.link });
     });
+  }
+
+  _openConfirm(popup) {
+    popup.classList.add("modal_opened");
   }
 
   _handleLikeIcon() {
