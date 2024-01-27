@@ -54,9 +54,10 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const profileSubtitleInput = document.querySelector("#profile-subtitle-input");
 const profileForm = document.forms["modal-form"];
 const editImageForm = document.querySelector("#image-edit-form");
+const profileImage = document.querySelector("#profile-image");
+const profileEditImageForm = document.querySelector("#image-edit-form");
 // const confirmDelete = document.querySelector("#delete-popup");
 // const profileImageModal = document.querySelector("#profile-image-modal");
-const profileImage = document.querySelector("#profile-image");
 
 // profileImage.addEventListener("click", () => {
 //   profileImageModal.classList.add("modal_opened");
@@ -98,20 +99,21 @@ function handleImageClick(card) {
 }
 
 function createCard(cardData) {
-  const card = new Card(
-    cardData,
-    "#card-template",
-    handleImageClick
-    // confirmDelete
-  );
+  const card = new Card(cardData, "#card-template", handleImageClick);
   return card.getView();
 }
 
-function handleDeleteClick(card) {
-  card.classList.add("modal_opened");
-}
+// function handleDeleteClick(card) {
+//   card.classList.add("modal_opened");
+// }
+
+// ^^^ PASS THIS AS AN ARGUMENT FOR THE CARD CLASS I THINK IDK FACKIN RAAAHHHH
 
 // EVENT LISTENERS
+
+profileImage.addEventListener("click", () => {
+  imageEditForm.open();
+});
 
 addNewCardBtn.addEventListener("click", () => {
   addCardFormValidator.resetValidation();
@@ -179,9 +181,7 @@ const newCardSection = new Section(
 const imageEditForm = new PopupWithForm("#profile-image-modal");
 imageEditForm.setEventListeners();
 
-profileImage.addEventListener("click", () => {
-  imageEditForm.open();
-});
+const imageEditFormValidation = new FormValidator(config, profileEditImageForm);
 
 newCardSection.renderItems();
 
@@ -195,9 +195,7 @@ const api = new Api({
 
 api
   .getInitialCards()
-  .then((result) => {
-    console.log(result);
-  })
+  .then((result) => {})
   .catch((err) => {
     console.error(err);
   });
