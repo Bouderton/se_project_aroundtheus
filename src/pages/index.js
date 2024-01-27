@@ -56,7 +56,7 @@ const profileForm = document.forms["modal-form"];
 const editImageForm = document.querySelector("#image-edit-form");
 // const confirmDelete = document.querySelector("#delete-popup");
 // const profileImageModal = document.querySelector("#profile-image-modal");
-// const profileImage = document.querySelector("#profile-image");
+const profileImage = document.querySelector("#profile-image");
 
 // profileImage.addEventListener("click", () => {
 //   profileImageModal.classList.add("modal_opened");
@@ -174,7 +174,14 @@ const newCardSection = new Section(
   cardsWrap
 );
 
-const confirmDeletePopup = new PopupConfirm("#delete-popup", handleDeleteClick);
+// const confirmDeletePopup = new PopupConfirm("#delete-popup", handleDeleteClick);
+
+const imageEditForm = new PopupWithForm("#profile-image-modal");
+imageEditForm.setEventListeners();
+
+profileImage.addEventListener("click", () => {
+  imageEditForm.open();
+});
 
 newCardSection.renderItems();
 
