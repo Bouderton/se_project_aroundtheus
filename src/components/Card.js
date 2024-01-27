@@ -1,10 +1,9 @@
 export default class Card {
-  constructor({ name, link }, cardTemplate, handleImageClick, confirmDelete) {
+  constructor({ name, link }, cardTemplate, handleImageClick) {
     this.name = name;
     this.link = link;
     this._cardTemplate = cardTemplate;
     this._handleImageClick = handleImageClick;
-    this._confirmDelete = confirmDelete;
   }
 
   _setEventListeners() {
@@ -15,7 +14,7 @@ export default class Card {
     this._trashBtn.addEventListener("click", () => {
       // this._handleDeleteCard();
       console.log("deez nuts");
-      this._openConfirm(this._confirmDelete);
+      // this._openConfirm(this._confirmPopup);
     });
 
     this._cardImageEl.addEventListener("click", () => {
@@ -23,9 +22,9 @@ export default class Card {
     });
   }
 
-  _openConfirm(popup) {
-    popup.classList.add("modal_opened");
-  }
+  // _openConfirm(popup) {
+  //   popup.classList.add("modal_opened");
+  // }
 
   _handleLikeIcon() {
     this._likeBtn.classList.toggle("card__like-button_active");

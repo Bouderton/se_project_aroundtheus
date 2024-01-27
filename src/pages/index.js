@@ -6,6 +6,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import PopupConfirm from "../components/PopupConfirm.js";
 import "../pages/index.css";
 
 const initialCards = [
@@ -52,9 +53,14 @@ const initialCards = [
 const profileTitleInput = document.querySelector("#profile-title-input");
 const profileSubtitleInput = document.querySelector("#profile-subtitle-input");
 const profileForm = document.forms["modal-form"];
-// const profileImage = document.querySelector("#profile-image");
 const editImageForm = document.querySelector("#image-edit-form");
-const confirmDelete = document.querySelector("#delete-confirm");
+// const confirmDelete = document.querySelector("#delete-popup");
+// const profileImageModal = document.querySelector("#profile-image-modal");
+// const profileImage = document.querySelector("#profile-image");
+
+// profileImage.addEventListener("click", () => {
+//   profileImageModal.classList.add("modal_opened");
+// });
 
 // Card Variables
 
@@ -95,10 +101,14 @@ function createCard(cardData) {
   const card = new Card(
     cardData,
     "#card-template",
-    handleImageClick,
-    confirmDelete
+    handleImageClick
+    // confirmDelete
   );
   return card.getView();
+}
+
+function handleDeleteClick(card) {
+  card.classList.add("modal_opened");
 }
 
 // EVENT LISTENERS
@@ -164,6 +174,8 @@ const newCardSection = new Section(
   cardsWrap
 );
 
+const confirmDeletePopup = new PopupConfirm("#delete-popup", handleDeleteClick);
+
 newCardSection.renderItems();
 
 const api = new Api({
@@ -176,7 +188,9 @@ const api = new Api({
 
 api
   .getInitialCards()
-  .then((result) => {})
+  .then((result) => {
+    console.log(result);
+  })
   .catch((err) => {
     console.error(err);
   });

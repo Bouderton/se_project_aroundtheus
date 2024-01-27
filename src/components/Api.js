@@ -3,6 +3,7 @@ export default class Api {
 
   getInitialCards() {
     return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+      method: "GET",
       headers: {
         authorization: "250daeea-0b63-48f9-a4b3-e529116433c4",
       },
