@@ -104,9 +104,9 @@ function createCard(cardData) {
   return card.getView();
 }
 
-// function handleDeleteClick(card) {
-//   card.classList.add("modal_opened");
-// }
+function handleDeleteClick(card) {
+  confirmDeletePopup.open();
+}
 
 // ^^^ PASS THIS AS AN ARGUMENT FOR THE CARD CLASS I THINK IDK FACKIN RAAAHHHH
 
@@ -181,12 +181,14 @@ const newCardSection = new Section(
   cardsWrap
 );
 
-// const confirmDeletePopup = new PopupConfirm("#delete-popup", handleDeleteClick);
+const confirmDeletePopup = new PopupConfirm("#delete-popup");
+confirmDeletePopup.setEventListeners();
 
 const imageEditForm = new PopupWithForm("#profile-image-modal");
 imageEditForm.setEventListeners();
 
 const imageEditFormValidation = new FormValidator(config, profileEditImageForm);
+imageEditFormValidation.enableValidation();
 
 newCardSection.renderItems();
 

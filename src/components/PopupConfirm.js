@@ -1,9 +1,13 @@
 import Popup from "./Popup.js";
 
 export default class PopupConfirm extends Popup {
-  constructor(popupSelector, handleDeleteClick) {
+  constructor(popupSelector) {
     super({ popupSelector });
-    this._handleDeleteClick = handleDeleteClick;
-    this._trashBtn = document.querySelector("#trash-button");
+    this._submitBtn = document.querySelector("#confirm-button");
+    console.log({ popupSelector });
+  }
+
+  setEventListeners() {
+    super.setEventListeners();
   }
 }
