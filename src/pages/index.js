@@ -56,6 +56,7 @@ const profileForm = document.forms["modal-form"];
 const editImageForm = document.querySelector("#image-edit-form");
 const profileImage = document.querySelector("#profile-image");
 const profileEditImageForm = document.querySelector("#image-edit-form");
+const pencil = document.querySelector("#profile-pencil");
 // const confirmDelete = document.querySelector("#delete-popup");
 // const profileImageModal = document.querySelector("#profile-image-modal");
 
@@ -112,6 +113,10 @@ function createCard(cardData) {
 // EVENT LISTENERS
 
 profileImage.addEventListener("click", () => {
+  imageEditForm.open();
+});
+
+pencil.addEventListener("click", () => {
   imageEditForm.open();
 });
 
