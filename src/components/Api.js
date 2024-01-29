@@ -15,6 +15,12 @@ export default class Api {
   }
 
   //other methods
+
+  // delete cards
+
+  // get user info
+
+  // get likes
 }
 
 //set up fetches for each request
