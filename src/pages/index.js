@@ -88,6 +88,7 @@ const closeBtns = document.querySelectorAll(".modal__close-button");
 
 function handleProfileEditSubmit(data) {
   profileUserInfo.setUserInfo(data);
+  api.updateUserInfo();
 }
 
 function handleCardSubmit({ title: name, subtitle: link }) {
@@ -111,9 +112,6 @@ function createCard(cardData) {
 
 function handleDeleteClick(card) {
   confirmDeletePopup.open();
-  profileEditImageForm.setEventListener("submit", () => {
-    console.log("yes");
-  });
 }
 
 // ^^^ PASS THIS AS AN ARGUMENT FOR THE CARD CLASS I THINK IDK FACKIN RAAAHHHH
