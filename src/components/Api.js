@@ -14,28 +14,13 @@ export default class Api {
   getInitialCards() {
     return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
       method: "GET",
-      headers: {
-        authorization: "250daeea-0b63-48f9-a4b3-e529116433c4",
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    });
+      headers: this._headers,
+    }).then((res) => this._checkResponce(res));
   }
 
   getUserinfo() {}
 
-  updateUserInfo({ name, description }) {
-    return fetch("${this._baseUrl}/users/me", {
-      method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify({
-        name: title,
-        about: description,
-      }),
-    }).then((res) => this._checkResponce(res));
-  }
+  updateUserInfo({ name, description }) {}
 
   deleteCard() {}
 
