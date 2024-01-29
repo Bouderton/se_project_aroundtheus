@@ -15,7 +15,6 @@ export default class PopupConfirm extends Popup {
 
     this._imageEditForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      console.log("balls");
     });
   }
 }
