@@ -3,20 +3,19 @@ import Popup from "./Popup.js";
 export default class PopupConfirm extends Popup {
   constructor(popupSelector) {
     super({ popupSelector });
-    this._confirmBtn = this._popupElement.querySelector(".modal__save-button");
-    console.log(this._confirmBtn);
+    this._imageEditForm = this._popupElement.querySelector(".modal__form");
   }
 
   setSubmitAction(handler) {
-    handler.preventDefault();
-    console.log("balls");
+    this.submitAction = handler;
   }
 
   setEventListeners() {
     super.setEventListeners();
 
-    this._confirmBtn.addEventListener("click", () => {
-      this.setSubmitAction();
+    this._imageEditForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      console.log("balls");
     });
   }
 }

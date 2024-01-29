@@ -111,6 +111,9 @@ function createCard(cardData) {
 
 function handleDeleteClick(card) {
   confirmDeletePopup.open();
+  // confirmDelete.setEventListener("submit", () => {
+  //   console.log("balls");
+  // });
 }
 
 // ^^^ PASS THIS AS AN ARGUMENT FOR THE CARD CLASS I THINK IDK FACKIN RAAAHHHH
