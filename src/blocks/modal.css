@@ -121,6 +121,27 @@
   line-height: normal;
 }
 
+.modal__confirm-button {
+  margin: 18px 0 0;
+  width: 100%;
+  padding: 0;
+  background-color: #000;
+  border: none;
+  height: 50px;
+  text-align: center;
+  color: #fff;
+  font-family: "Inter", Arial, serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.modal__confirm-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 .modal__save-button_disabled {
   background: rgba(0, 0, 0, 0.8);
 }
