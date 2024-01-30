@@ -18,11 +18,27 @@ export default class Api {
     }).then((res) => this._checkResponce(res));
   }
 
-  getUserinfo() {}
+  // getUserinfo() {
+  //   return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+  //     method: "GET",
+  //     headers: this._headers,
+  //   }).then((res) => this._checkResponce(res));
+  // }
 
   updateUserInfo({ name, description }) {}
 
   deleteCard() {}
+
+  getCard(name, link) {
+    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: name,
+        link: link,
+      }),
+    });
+  }
 
   //other methods
 
