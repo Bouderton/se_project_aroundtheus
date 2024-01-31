@@ -33,7 +33,7 @@ export default class FormValidator {
     );
     inputElement.classList.remove(this._errorClass);
     inputElement.classList.remove(this._inputErrorClass);
-    errorMessageEl.textContent = null;
+    errorMessageEl.textContent = "";
   }
 
   _checkInputValidity(inputElement) {

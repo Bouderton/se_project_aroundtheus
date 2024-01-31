@@ -18,6 +18,15 @@ export default class PopupWithForm extends Popup {
     return inputValues;
   }
 
+  // Maybe this works???
+  // setLoading(loading) {
+  //   if (loading) {
+  //     this._submitButton.textContent = "Saving ...";
+  //   } else {
+  //     this._submitButton.textContent = this._submitButton;
+  //   }
+  // }
+
   setEventListeners() {
     super.setEventListeners();
 

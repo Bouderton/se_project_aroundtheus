@@ -18,12 +18,16 @@ export default class Api {
     }).then((res) => this._checkResponce(res));
   }
 
-  // getUserinfo() {
-  //   return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
-  //     method: "GET",
-  //     headers: this._headers,
-  //   }).then((res) => this._checkResponce(res));
-  // }
+  async getUserinfo() {
+    const res = await fetch(
+      "https://around-api.en.tripleten-services.com/v1/users/me",
+      {
+        method: "GET",
+        headers: this._headers,
+      }
+    );
+    return this._checkResponce(res);
+  }
 
   updateUserInfo({ name, description }) {}
 

@@ -28,15 +28,13 @@ export default class Card {
     });
   }
 
-  // _openConfirm(popup) {
-  //   popup.classList.add("modal_opened");
-  // }
+  setSubmitAction() {}
 
   _handleLikeIcon() {
     this._likeBtn.classList.toggle("card__like-button_active");
   }
 
-  _handleDeleteCard() {
+  handleDeleteCard() {
     this._cardElement.remove();
     this._cardElement = null;
   }
@@ -48,7 +46,6 @@ export default class Card {
       .cloneNode(true);
 
     this._likeBtn = this._cardElement.querySelector(".card__like-button");
-    // this._trashBtn = this._cardElement.querySelector(".card__trash-button");
     this._cardImageEl = this._cardElement.querySelector(".card__image");
     this._cardTitleEl = this._cardElement.querySelector(
       ".card__description-text"
