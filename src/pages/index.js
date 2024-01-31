@@ -96,6 +96,10 @@ function handleCardSubmit({ title: name, subtitle: link }) {
   addImageForm.close();
 }
 
+function handleAvatarSubmit(input) {
+  // i have no idea
+}
+
 function handleImageClick(card) {
   previewImagePopup.open(card);
 }
