@@ -212,12 +212,3 @@ api
   .catch((err) => {
     console.error(err);
   });
-
-api
-  .getUserInfo()
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
