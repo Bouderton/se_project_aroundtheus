@@ -49,3 +49,9 @@ export default class Api {
 
 //set up fetches for each request
 // HOW
+
+//SO
+// Request to the server in api THEN
+// after the promise it returns is successful (then)
+// JS code runs and affects the contents of the page
+// YOU GOT THIS WOOOOOOOOOO
