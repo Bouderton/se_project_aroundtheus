@@ -18,7 +18,7 @@ export default class Api {
     }).then((res) => this._checkResponce(res));
   }
 
-  getUserinfo() {
+  getUserInfo() {
     return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
       method: "GET",
       headers: this._headers,
@@ -29,7 +29,7 @@ export default class Api {
 
   deleteCard() {}
 
-  getCard(name, link) {
+  addCard({ name, link }) {
     return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
       method: "POST",
       headers: this._headers,
@@ -37,7 +37,7 @@ export default class Api {
         name: name,
         link: link,
       }),
-    });
+    }).then((res) => this._checkResponce(res));
   }
 
   getLikes() {}

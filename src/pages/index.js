@@ -92,8 +92,15 @@ function handleProfileEditSubmit(data) {
 }
 
 function handleCardSubmit({ title: name, subtitle: link }) {
-  newCardSection.addItem({ name, link });
-  addImageForm.close();
+  api
+    .addCard({ name, link })
+    .then((card) => {
+      newCardSection.addItem({ name, link });
+      addImageForm.close();
+    })
+    .catch((err) => {
+      alert(`${err} Failed to add card.`);
+    });
 }
 
 function handleAvatarSubmit(input) {
@@ -183,14 +190,6 @@ addImageForm.setEventListeners();
 const previewImagePopup = new PopupWithImage("#preview-modal");
 previewImagePopup.setEventListeners();
 
-const newCardSection = new Section(
-  {
-    items: initialCards,
-    renderer: createCard,
-  },
-  cardsWrap
-);
-
 const confirmDeletePopup = new PopupConfirm("#delete-popup");
 confirmDeletePopup.setEventListeners();
 
@@ -200,8 +199,6 @@ imageEditForm.setEventListeners();
 const imageEditFormValidation = new FormValidator(config, profileEditImageForm);
 imageEditFormValidation.enableValidation();
 
-newCardSection.renderItems();
-
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
@@ -210,9 +207,36 @@ const api = new Api({
   },
 });
 
+const newCardSection = new Section(
+  {
+    items: [],
+    renderer: createCard,
+  },
+  cardsWrap
+);
+
 api
   .getInitialCards()
-  .then((result) => {})
+  .then((cards) => {
+    newCardSection.setItems(cards);
+    newCardSection.renderItems();
+  })
   .catch((err) => {
-    console.error(err);
+    alert(`${err} Failed to get cards.`);
   });
+
+api
+  .getUserInfo()
+  .then((info) => {
+    profileUserInfo.setUserInfo({
+      name: info.name,
+      description: info.about,
+    });
+  })
+  .catch((err) => {
+    alert(`${err} Failed to get user info.`);
+  });
+
+// MAKE DELETE CARD API
+// PROFILE EDIT FORM API
+// YOU GOT THIS WOOOOOOOOOOO
