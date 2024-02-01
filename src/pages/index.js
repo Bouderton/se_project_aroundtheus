@@ -123,6 +123,16 @@ function createCard(cardData) {
 
 function handleDeleteClick(card) {
   confirmDeletePopup.open();
+  confirmDeletePopup.setSubmitAction(() => {
+    api
+      .deleteCard(card._id)
+      .then((result) => {
+        card.handleDeleteCard();
+      })
+      .catch((err) => {
+        alert(`${err} Failed to delete post.`);
+      });
+  });
 }
 
 // ^^^ PASS THIS AS AN ARGUMENT FOR THE CARD CLASS I THINK IDK FACKIN RAAAHHHH
@@ -183,6 +193,8 @@ const profileUserInfo = new UserInfo({
   title: ".profile__title",
   subtitle: ".profile__subtitle",
 });
+
+// CLASSES
 
 const addImageForm = new PopupWithForm("#add-card-modal", handleCardSubmit);
 addImageForm.setEventListeners();

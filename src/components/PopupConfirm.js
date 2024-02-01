@@ -6,14 +6,16 @@ export default class PopupConfirm extends Popup {
     this._imageEditForm = this._popupElement.querySelector(".modal__form");
   }
 
-  setSubmitAction(handler) {}
+  setSubmitAction(handler) {
+    this._setSubmitAction = handler;
+  }
 
   setEventListeners() {
     super.setEventListeners();
 
     this._imageEditForm.addEventListener("submit", (e) => {
       e.preventDefault();
-
+      this._setSubmitAction();
       this.close();
     });
   }

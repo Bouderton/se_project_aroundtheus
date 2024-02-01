@@ -12,14 +12,14 @@ export default class Api {
   }
 
   getInitialCards() {
-    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+    return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
       headers: this._headers,
     }).then((res) => this._checkResponce(res));
   }
 
   getUserInfo() {
-    return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: this._headers,
     }).then((res) => this._checkResponce(res));
@@ -27,10 +27,15 @@ export default class Api {
 
   updateUserInfo({ name, description }) {}
 
-  deleteCard() {}
+  deleteCard(id) {
+    return fetch(`${this._baseUrl}/cards/card${id}`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then((res) => this._checkResponce(res));
+  }
 
   addCard({ name, link }) {
-    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+    return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
