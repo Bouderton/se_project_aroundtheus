@@ -54,7 +54,7 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const profileSubtitleInput = document.querySelector("#profile-subtitle-input");
 const profileForm = document.forms["modal-form"];
 const editImageForm = document.querySelector("#image-edit-form");
-const profileImage = document.querySelector("#profile-image");
+const avatarImage = document.querySelector("#profile-avatar-image");
 const profileEditImageForm = document.querySelector("#image-edit-form");
 const pencil = document.querySelector("#profile-pencil");
 // const confirmDelete = document.querySelector("#delete-popup");
@@ -153,7 +153,7 @@ function handleDeleteClick(card) {
 
 // EVENT LISTENERS
 
-profileImage.addEventListener("click", () => {
+avatarImage.addEventListener("click", () => {
   avatarEditForm.open();
 });
 
@@ -206,6 +206,7 @@ newPopupForm.setEventListeners();
 const profileUserInfo = new UserInfo({
   title: ".profile__title",
   subtitle: ".profile__subtitle",
+  avatar: ".profile__image",
 });
 
 // CLASSES
