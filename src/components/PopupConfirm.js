@@ -7,7 +7,7 @@ export default class PopupConfirm extends Popup {
   }
 
   setSubmitAction(handler) {
-    this._setSubmitAction = handler;
+    this._handleSubmit = handler;
   }
 
   setEventListeners() {
@@ -15,7 +15,7 @@ export default class PopupConfirm extends Popup {
 
     this._imageEditForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      this._setSubmitAction();
+      this._handleSubmit();
       this.close();
     });
   }

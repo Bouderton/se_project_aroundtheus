@@ -28,7 +28,7 @@ export default class Api {
   updateUserInfo({ name, description }) {}
 
   deleteCard(id) {
-    return fetch(`${this._baseUrl}/cards/card${id}`, {
+    return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
     }).then((res) => this._checkResponce(res));
