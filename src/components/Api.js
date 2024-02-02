@@ -55,18 +55,28 @@ export default class Api {
     }).then((res) => this._checkResponce(res));
   }
 
-  getLikes() {}
+  getLikes() {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method: "PUT",
+      headers: this._headers,
+    }).then((res) => this._checkResponce(res));
+  }
 
-  removeLike() {}
+  removeLike() {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then((res) => this._checkResponce(res));
+  }
 
   // setLikes??(){}
 
-  changeAvatar(url) {
+  changeAvatar(link) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: url,
+        avatar: link,
       }),
     }).then((res) => this._checkResponce(res));
   }

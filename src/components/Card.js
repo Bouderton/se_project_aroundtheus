@@ -29,8 +29,6 @@ export default class Card {
     });
   }
 
-  setSubmitAction() {}
-
   _handleLikeIcon() {
     this._likeBtn.classList.toggle("card__like-button_active");
   }

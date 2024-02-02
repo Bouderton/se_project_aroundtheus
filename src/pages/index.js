@@ -141,7 +141,7 @@ function handleDeleteClick(card) {
     api
       .deleteCard(card._id)
       .then((result) => {
-        card.handleDeleteCard();
+        card.handleDeleteCard(result);
       })
       .catch((err) => {
         alert(`${err} Failed to delete post.`);
