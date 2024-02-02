@@ -27,6 +27,14 @@ export default class Api {
 
   updateUserInfo({ name, description }) {
     // FETCH USER INFO AND PATCH IT
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: name,
+        about: description,
+      }),
+    }).then((res) => this._checkResponce(res));
   }
 
   deleteCard(id) {

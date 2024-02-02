@@ -87,8 +87,14 @@ const closeBtns = document.querySelectorAll(".modal__close-button");
 // FUNCTIONS
 
 function handleProfileEditSubmit(data) {
-  profileUserInfo.setUserInfo(data);
-  api.updateUserInfo();
+  api
+    .updateUserInfo(data)
+    .then((result) => {
+      profileUserInfo.setUserInfo(data);
+    })
+    .catch((err) => {
+      alert(`${err} Failed to change user info.`);
+    });
 }
 
 function handleCardSubmit({ title: name, subtitle: link }) {
