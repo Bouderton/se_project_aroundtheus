@@ -98,6 +98,7 @@ function handleProfileEditSubmit(data) {
 }
 
 function handleCardSubmit({ title: name, subtitle: link }) {
+  // DON'T FORGET THE SAVE LOADING BUTTON
   api
     .addCard({ name, link })
     .then((card) => {
@@ -110,7 +111,14 @@ function handleCardSubmit({ title: name, subtitle: link }) {
 }
 
 function handleAvatarSubmit(input) {
-  // i have no idea
+  api
+    .changeAvatar(input.link)
+    .then((result) => {
+      profileUserInfo.setUserAvatar(result.avatar);
+    })
+    .catch((err) => {
+      alert(`${err} Failed to change avatar.`);
+    });
 }
 
 function handleImageClick(card) {
@@ -146,11 +154,11 @@ function handleDeleteClick(card) {
 // EVENT LISTENERS
 
 profileImage.addEventListener("click", () => {
-  imageEditForm.open();
+  avatarEditForm.open();
 });
 
 pencil.addEventListener("click", () => {
-  imageEditForm.open();
+  avatarEditForm.open();
 });
 
 addNewCardBtn.addEventListener("click", () => {
@@ -211,11 +219,17 @@ previewImagePopup.setEventListeners();
 const confirmDeletePopup = new PopupConfirm("#delete-popup");
 confirmDeletePopup.setEventListeners();
 
-const imageEditForm = new PopupWithForm("#profile-image-modal");
-imageEditForm.setEventListeners();
+const avatarEditForm = new PopupWithForm(
+  "#profile-image-modal",
+  handleAvatarSubmit
+);
+avatarEditForm.setEventListeners();
 
-const imageEditFormValidation = new FormValidator(config, profileEditImageForm);
-imageEditFormValidation.enableValidation();
+const avatarEditFormValidation = new FormValidator(
+  config,
+  profileEditImageForm
+);
+avatarEditFormValidation.enableValidation();
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",

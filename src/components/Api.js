@@ -61,12 +61,14 @@ export default class Api {
 
   // setLikes??(){}
 
-  getAvatar() {
-    // GET AVATER
-  }
-
-  changeAvatar() {
-    // CHANGE AVATAR
+  changeAvatar(url) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: url,
+      }),
+    });
   }
 }
 
