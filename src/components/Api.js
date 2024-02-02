@@ -25,7 +25,9 @@ export default class Api {
     }).then((res) => this._checkResponce(res));
   }
 
-  updateUserInfo({ name, description }) {}
+  updateUserInfo({ name, description }) {
+    // FETCH USER INFO AND PATCH IT
+  }
 
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
@@ -47,9 +49,17 @@ export default class Api {
 
   getLikes() {}
 
-  setAvatar() {}
+  removeLike() {}
 
-  changeAvatar() {}
+  // setLikes??(){}
+
+  getAvatar() {
+    // GET AVATER
+  }
+
+  changeAvatar() {
+    // CHANGE AVATAR
+  }
 }
 
 //set up fetches for each request
