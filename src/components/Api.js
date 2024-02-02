@@ -68,7 +68,7 @@ export default class Api {
       body: JSON.stringify({
         avatar: url,
       }),
-    });
+    }).then((res) => this._checkResponce(res));
   }
 }
 
