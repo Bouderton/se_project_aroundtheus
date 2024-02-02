@@ -68,8 +68,8 @@ const pencil = document.querySelector("#profile-pencil");
 
 const addCardModal = document.querySelector("#add-card-modal");
 const addCardForm = addCardModal.querySelector("#add-card-form");
-const cardTitleInput = document.querySelector("#card-title-input");
-const cardUrlInput = document.querySelector("#modal-url-input");
+// const cardTitleInput = document.querySelector("#card-title-input");
+// const cardUrlInput = document.querySelector("#modal-url-input");
 const cardsWrap = document.querySelector(".cards__list");
 
 // Preview Image Variables
@@ -82,7 +82,7 @@ const previewCaption = previewModal.querySelector(".modal__caption");
 
 const profileEditBtn = document.querySelector("#profile-edit-button");
 const addNewCardBtn = document.querySelector("#add-card-button");
-const closeBtns = document.querySelectorAll(".modal__close-button");
+// const closeBtns = document.querySelectorAll(".modal__close-button");
 
 // FUNCTIONS
 
