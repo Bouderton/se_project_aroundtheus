@@ -62,12 +62,16 @@ export default class Api {
     }).then((res) => this._checkResponce(res));
   }
 
+  // FIGURE OUT HOW TO SET THE LIKES INDEX.JS
+
   removeLike() {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "DELETE",
       headers: this._headers,
     }).then((res) => this._checkResponce(res));
   }
+
+  // FIGURE OUT HOW TO REMOVE LIKES INDEX.JS
 
   // setLikes??(){}
 
