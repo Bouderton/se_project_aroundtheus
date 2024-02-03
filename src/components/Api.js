@@ -75,12 +75,19 @@ export default class Api {
 
   // setLikes??(){}
 
-  changeAvatar(link) {
+  // getAvatar() {
+  //   return fetch(`${this._baseUrl}/users/me/avatar`, {
+  //     method: "GET",
+  //     headers: this._headers,
+  //   }).then((res) => this._checkResponce);
+  // }
+
+  changeAvatar(url) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: link,
+        avatar: url,
       }),
     }).then((res) => this._checkResponce(res));
   }
