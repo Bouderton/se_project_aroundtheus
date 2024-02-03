@@ -111,6 +111,7 @@ function handleCardSubmit({ title: name, subtitle: link }) {
 }
 
 function handleAvatarSubmit(input) {
+  debugger;
   api
     .changeAvatar(input.link)
     .then((result) => {

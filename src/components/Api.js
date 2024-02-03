@@ -55,7 +55,7 @@ export default class Api {
     }).then((res) => this._checkResponce(res));
   }
 
-  getLikes() {
+  setLike() {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "PUT",
       headers: this._headers,
