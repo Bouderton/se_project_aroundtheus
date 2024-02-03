@@ -265,6 +265,7 @@ api
       name: info.name,
       description: info.about,
     });
+    profileUserInfo.setUserAvatar(info.avatar);
   })
   .catch((err) => {
     alert(`${err} Failed to get user info.`);
