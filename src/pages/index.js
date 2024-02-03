@@ -271,10 +271,7 @@ api
     alert(`${err} Failed to get user info.`);
   });
 
-// MAKE DELETE CARD API
-// PROFILE EDIT FORM API
-// YOU GOT THIS WOOOOOOOOOOO
-
-// head empty but im making progress yippieeeeee
-
-// ORGANIZE THIS MESS LOL
+/* To-Do List:
+- Add Like api's
+- Add the "Saving..." load function
+- ORGANIZE THIS MESS LOL */
