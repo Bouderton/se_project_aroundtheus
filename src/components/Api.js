@@ -55,7 +55,7 @@ export default class Api {
     }).then((res) => this._checkResponce(res));
   }
 
-  setLike() {
+  setLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "PUT",
       headers: this._headers,
@@ -64,7 +64,7 @@ export default class Api {
 
   // FIGURE OUT HOW TO SET THE LIKES INDEX.JS
 
-  removeLike() {
+  removeLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "DELETE",
       headers: this._headers,
@@ -72,8 +72,6 @@ export default class Api {
   }
 
   // FIGURE OUT HOW TO REMOVE LIKES INDEX.JS
-
-  // setLikes??(){}
 
   // getAvatar() {
   //   return fetch(`${this._baseUrl}/users/me/avatar`, {
