@@ -121,6 +121,29 @@ function handleAvatarSubmit(input) {
     });
 }
 
+function handleAddLike(card) {
+  // debugger;
+  if (card.isLiked) {
+    return api
+      .removeLike(card._id)
+      .then(() => {
+        card.handleLikeIcon();
+      })
+      .catch((err) => {
+        alert(`${err} Failed to add/remove like.`);
+      });
+  } else {
+    return api
+      .setLike(card._id)
+      .then(() => {
+        card.handleLikeIcon();
+      })
+      .catch((err) => {
+        alert(`${err} Failed to add/remove like.`);
+      });
+  }
+}
+
 function handleImageClick(card) {
   previewImagePopup.open(card);
 }
@@ -272,16 +295,6 @@ api
     alert(`${err} Failed to get user info.`);
   });
 
-function handleAddLike(card) {
-  api
-    .setLike(card._id)
-    .then(() => {
-      card.handleLikeIcon();
-    })
-    .catch((err) => {
-      alert(`${err} Failed to add like.`);
-    });
-}
 /* To-Do List:
 - Add Like api's
 - Add the "Saving..." load function
