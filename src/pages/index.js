@@ -87,10 +87,12 @@ const addNewCardBtn = document.querySelector("#add-card-button");
 // FUNCTIONS
 
 function handleProfileEditSubmit(data) {
+  profileEditForm.setLoading(true);
   api
     .updateUserInfo(data)
     .then((result) => {
       profileUserInfo.setUserInfo(data);
+      profileEditForm.setLoading(false);
     })
     .catch((err) => {
       alert(`${err} Failed to change user info.`);
@@ -98,11 +100,12 @@ function handleProfileEditSubmit(data) {
 }
 
 function handleCardSubmit({ title: name, subtitle: link }) {
-  // DON'T FORGET THE SAVE LOADING BUTTON
+  addImageForm.setLoading(true);
   api
     .addCard({ name, link })
     .then((card) => {
       newCardSection.addItem({ name, link });
+      addImageForm.setLoading(false);
       addImageForm.close();
     })
     .catch((err) => {
@@ -111,10 +114,12 @@ function handleCardSubmit({ title: name, subtitle: link }) {
 }
 
 function handleAvatarSubmit(input) {
+  avatarEditForm.setLoading(true);
   api
     .changeAvatar(input.link)
     .then((result) => {
       profileUserInfo.setUserAvatar(result.avatar);
+      avatarEditForm.setLoading(false);
     })
     .catch((err) => {
       alert(`${err} Failed to change avatar.`);
@@ -193,7 +198,7 @@ profileEditBtn.addEventListener("click", () => {
   const { name, description } = profileUserInfo.getUserInfo();
   profileTitleInput.value = name;
   profileSubtitleInput.value = description;
-  newPopupForm.open();
+  profileEditForm.open();
 });
 
 modalImage.addEventListener("click", () => {
@@ -220,11 +225,11 @@ addCardFormValidator.enableValidation();
 const editProfileFormValidator = new FormValidator(config, profileForm);
 editProfileFormValidator.enableValidation();
 
-const newPopupForm = new PopupWithForm(
+const profileEditForm = new PopupWithForm(
   "#profile-edit-modal",
   handleProfileEditSubmit
 );
-newPopupForm.setEventListeners();
+profileEditForm.setEventListeners();
 
 const profileUserInfo = new UserInfo({
   title: ".profile__title",
