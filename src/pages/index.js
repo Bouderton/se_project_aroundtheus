@@ -295,6 +295,15 @@ api
     alert(`${err} Failed to get user info.`);
   });
 
+api
+  .getLikes()
+  .then((result) => {
+    // renderLikes method?
+  })
+  .catch((err) => {
+    alert(`${err} Failed to get likes.`);
+  });
+
 /* To-Do List:
 - Add Like api's
 - Add the "Saving..." load function
