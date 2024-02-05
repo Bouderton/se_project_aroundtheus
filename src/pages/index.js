@@ -122,7 +122,7 @@ function handleAvatarSubmit(input) {
 }
 
 function handleAddLike(card) {
-  // debugger;
+  debugger;
   if (card.isLiked) {
     return api
       .removeLike(card._id)
