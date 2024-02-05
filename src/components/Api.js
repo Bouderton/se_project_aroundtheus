@@ -56,7 +56,7 @@ export default class Api {
   }
 
   getLikes(id) {
-    return fetch(`${this._baseUrl}/cards${id}/likes`, {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "GET",
       headers: this._headers,
     }).then((res) => this._checkResponce(res));

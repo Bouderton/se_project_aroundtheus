@@ -15,10 +15,6 @@ export default class Card {
     this._handleAddLike = handleAddLike;
   }
 
-  // setLikeStatus(status) {
-  //   this._isLiked = status;
-  // }
-
   _setEventListeners() {
     this._likeBtn.addEventListener("click", () => {
       this._handleAddLike(this);
