@@ -32,8 +32,17 @@ export default class Card {
     });
   }
 
-  handleLikeIcon() {
-    this._likeBtn.classList.toggle("card__like-button_active");
+  handleLikeIcon(isLiked) {
+    this.isLiked = isLiked;
+    this._renderLikes();
+  }
+
+  _renderLikes() {
+    if (this.isLiked) {
+      this._likeBtn.classList.add("card__like-button_active");
+    } else {
+      this._likeBtn.classList.remove("card__like-button_active");
+    }
   }
 
   handleDeleteCard() {
@@ -58,6 +67,7 @@ export default class Card {
     this._cardImageEl.alt = this.name + "Photo";
 
     this._setEventListeners();
+    this._renderLikes();
 
     return this._cardElement;
   }

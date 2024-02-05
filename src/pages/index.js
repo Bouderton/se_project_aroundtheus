@@ -125,8 +125,8 @@ function handleAddLike(card) {
   if (card.isLiked) {
     return api
       .removeLike(card._id)
-      .then(() => {
-        card.handleLikeIcon();
+      .then((res) => {
+        card.handleLikeIcon(res.isLiked);
       })
       .catch((err) => {
         alert(`${err} Failed to add/remove like.`);
@@ -134,8 +134,8 @@ function handleAddLike(card) {
   } else {
     return api
       .setLike(card._id)
-      .then(() => {
-        card.handleLikeIcon();
+      .then((res) => {
+        card.handleLikeIcon(res.isLiked);
       })
       .catch((err) => {
         alert(`${err} Failed to add/remove like.`);
@@ -294,14 +294,14 @@ api
     alert(`${err} Failed to get user info.`);
   });
 
-api
-  .getLikes()
-  .then((result) => {
-    // renderLikes method?
-  })
-  .catch((err) => {
-    alert(`${err} Failed to get likes.`);
-  });
+// api
+//   .getLikes()
+//   .then((result) => {
+//     // renderLikes method?
+//   })
+//   .catch((err) => {
+//     alert(`${err} Failed to get likes.`);
+//   });
 
 /* To-Do List:
 - Add Like api's
