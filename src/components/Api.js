@@ -26,7 +26,6 @@ export default class Api {
   }
 
   updateUserInfo({ name, description }) {
-    // FETCH USER INFO AND PATCH IT
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
@@ -62,23 +61,12 @@ export default class Api {
     }).then((res) => this._checkResponce(res));
   }
 
-  // FIGURE OUT HOW TO SET THE LIKES INDEX.JS
-
   removeLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "DELETE",
       headers: this._headers,
     }).then((res) => this._checkResponce(res));
   }
-
-  // FIGURE OUT HOW TO REMOVE LIKES INDEX.JS
-
-  // getAvatar() {
-  //   return fetch(`${this._baseUrl}/users/me/avatar`, {
-  //     method: "GET",
-  //     headers: this._headers,
-  //   }).then((res) => this._checkResponce);
-  // }
 
   changeAvatar(url) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
@@ -90,12 +78,3 @@ export default class Api {
     }).then((res) => this._checkResponce(res));
   }
 }
-
-//set up fetches for each request
-// HOW
-
-//SO
-// Request to the server in api THEN
-// after the promise it returns is successful (then)
-// JS code runs and affects the contents of the page
-// YOU GOT THIS WOOOOOOOOOO

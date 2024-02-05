@@ -1,7 +1,6 @@
 import Api from "../components/Api.js";
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
-import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
@@ -9,44 +8,16 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupConfirm from "../components/PopupConfirm.js";
 import "../pages/index.css";
 
-// const initialCards = [
-//   {
-//     name: "Yosmite",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-//   },
-//   {
-//     name: "Lake Louise",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-//   },
-//   {
-//     name: "Bald Mountains",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-//   },
-//   {
-//     name: "Latemar",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-//   },
-//   {
-//     name: "Vanoise National Park",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-//   },
-//   {
-//     name: "Lago di Braies",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-//   },
-//   {
-//     name: "Mt Everest",
-//     link: "https://cdn.britannica.com/17/83817-050-67C814CD/Mount-Everest.jpg",
-//   },
-//   {
-//     name: "Great Wall of China",
-//     link: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/The_Great_Wall_of_China_at_Jinshanling-edit.jpg/1200px-The_Great_Wall_of_China_at_Jinshanling-edit.jpg",
-//   },
-//   {
-//     name: "Grand Canyon",
-//     link: "https://www.amtrakvacations.com/sites/amtrak/files/styles/hero/public/media/images/grand-canyon_670151752-web.jpg?h=f790d5ec&itok=PmHMpYK5",
-//   },
-// ];
+// VARIABLES
+
+const config = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__form-input",
+  submitButtonSelector: ".modal__save-button",
+  inactiveButtonClass: "modal__save-button_disabled",
+  inputErrorClass: "modal__error",
+  errorClass: "modal__form-input_type_error",
+};
 
 // Profile Variables
 
@@ -57,34 +28,57 @@ const editImageForm = document.querySelector("#image-edit-form");
 const avatarImage = document.querySelector("#profile-avatar-image");
 const profileEditImageForm = document.querySelector("#image-edit-form");
 const pencil = document.querySelector("#profile-pencil");
-// const confirmDelete = document.querySelector("#delete-popup");
-// const profileImageModal = document.querySelector("#profile-image-modal");
-
-// profileImage.addEventListener("click", () => {
-//   profileImageModal.classList.add("modal_opened");
-// });
 
 // Card Variables
 
 const addCardModal = document.querySelector("#add-card-modal");
 const addCardForm = addCardModal.querySelector("#add-card-form");
-// const cardTitleInput = document.querySelector("#card-title-input");
-// const cardUrlInput = document.querySelector("#modal-url-input");
 const cardsWrap = document.querySelector(".cards__list");
 
 // Preview Image Variables
 
 const previewModal = document.querySelector("#preview-modal");
 const modalImage = previewModal.querySelector(".modal__image");
-const previewCaption = previewModal.querySelector(".modal__caption");
 
 // Buttons
 
 const profileEditBtn = document.querySelector("#profile-edit-button");
 const addNewCardBtn = document.querySelector("#add-card-button");
-// const closeBtns = document.querySelectorAll(".modal__close-button");
 
-// FUNCTIONS
+// API'S
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "250daeea-0b63-48f9-a4b3-e529116433c4",
+    "Content-Type": "application/json",
+  },
+});
+
+api
+  .getInitialCards()
+  .then((cards) => {
+    newCardSection.setItems(cards);
+    newCardSection.renderItems();
+  })
+  .catch((err) => {
+    alert(`${err} Failed to get cards.`);
+  });
+
+api
+  .getUserInfo()
+  .then((info) => {
+    profileUserInfo.setUserInfo({
+      name: info.name,
+      description: info.about,
+    });
+    profileUserInfo.setUserAvatar(info.avatar);
+  })
+  .catch((err) => {
+    alert(`${err} Failed to get user info.`);
+  });
+
+// API FUNCTIONS
 
 function handleProfileEditSubmit(data) {
   profileEditForm.setLoading(true);
@@ -148,6 +142,8 @@ function handleAddLike(card) {
   }
 }
 
+// FUNCTIONS
+
 function handleImageClick(card) {
   previewImagePopup.open(card);
 }
@@ -177,8 +173,6 @@ function handleDeleteClick(card) {
   });
 }
 
-// ^^^ PASS THIS AS AN ARGUMENT FOR THE CARD CLASS I THINK IDK FACKIN RAAAHHHH
-
 // EVENT LISTENERS
 
 avatarImage.addEventListener("click", () => {
@@ -205,16 +199,7 @@ modalImage.addEventListener("click", () => {
   previewImagePopup.open();
 });
 
-const config = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__form-input",
-  submitButtonSelector: ".modal__save-button",
-  inactiveButtonClass: "modal__save-button_disabled",
-  inputErrorClass: "modal__error",
-  errorClass: "modal__form-input_type_error",
-};
-
-//New Classes
+//CLASSES
 
 const profileEditImage = new FormValidator(config, editImageForm);
 profileEditImage.enableValidation();
@@ -237,8 +222,6 @@ const profileUserInfo = new UserInfo({
   avatar: ".profile__image",
 });
 
-// CLASSES
-
 const addImageForm = new PopupWithForm("#add-card-modal", handleCardSubmit);
 addImageForm.setEventListeners();
 
@@ -260,14 +243,6 @@ const avatarEditFormValidation = new FormValidator(
 );
 avatarEditFormValidation.enableValidation();
 
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "250daeea-0b63-48f9-a4b3-e529116433c4",
-    "Content-Type": "application/json",
-  },
-});
-
 const newCardSection = new Section(
   {
     items: [],
@@ -276,29 +251,5 @@ const newCardSection = new Section(
   cardsWrap
 );
 
-api
-  .getInitialCards()
-  .then((cards) => {
-    newCardSection.setItems(cards);
-    newCardSection.renderItems();
-  })
-  .catch((err) => {
-    alert(`${err} Failed to get cards.`);
-  });
-
-api
-  .getUserInfo()
-  .then((info) => {
-    profileUserInfo.setUserInfo({
-      name: info.name,
-      description: info.about,
-    });
-    profileUserInfo.setUserAvatar(info.avatar);
-  })
-  .catch((err) => {
-    alert(`${err} Failed to get user info.`);
-  });
-
 /* To-Do List:
-- Add the "Saving..." load function
-- ORGANIZE THIS MESS LOL */
+- SUBMIT AND PRAY LOL */
