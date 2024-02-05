@@ -298,7 +298,7 @@ api
 api
   .getLikes()
   .then((result) => {
-    // renderLikes method?
+    //renderLikes method???
   })
   .catch((err) => {
     alert(`${err} Failed to get likes.`);
