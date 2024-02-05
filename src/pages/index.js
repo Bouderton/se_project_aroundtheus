@@ -125,7 +125,7 @@ function handleAddLike(card) {
     return api
       .removeLike(card._id)
       .then((res) => {
-        card.handleLikeIcon(res.isLiked);
+        card.setIsLiked(res.isLiked);
       })
       .catch((err) => {
         alert(`${err} Failed to add/remove like.`);
@@ -134,7 +134,7 @@ function handleAddLike(card) {
     return api
       .setLike(card._id)
       .then((res) => {
-        card.handleLikeIcon(res.isLiked);
+        card.setIsLiked(res.isLiked);
       })
       .catch((err) => {
         alert(`${err} Failed to add/remove like.`);

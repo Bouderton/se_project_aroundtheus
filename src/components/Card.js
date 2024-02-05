@@ -32,7 +32,7 @@ export default class Card {
     });
   }
 
-  handleLikeIcon(isLiked) {
+  setIsLiked(isLiked) {
     this.isLiked = isLiked;
     this._renderLikes();
   }
