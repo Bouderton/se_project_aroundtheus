@@ -55,13 +55,6 @@ export default class Api {
     }).then((res) => this._checkResponce(res));
   }
 
-  // getLikes(id) {
-  //   return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-  //     method: "GET",
-  //     headers: this._headers,
-  //   }).then((res) => this._checkResponce(res));
-  // }
-
   setLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "PUT",
