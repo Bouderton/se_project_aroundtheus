@@ -3,7 +3,7 @@ import Popup from "./Popup.js";
 export default class PopupConfirm extends Popup {
   constructor(popupSelector) {
     super({ popupSelector });
-    this._imageEditForm = this._popupElement.querySelector(".modal__form");
+    this._form = this._popupElement.querySelector(".modal__form");
   }
 
   setSubmitAction(handler) {
@@ -13,10 +13,9 @@ export default class PopupConfirm extends Popup {
   setEventListeners() {
     super.setEventListeners();
 
-    this._imageEditForm.addEventListener("submit", (e) => {
+    this._form.addEventListener("submit", (e) => {
       e.preventDefault();
       this._handleSubmit();
-      this.close();
     });
   }
 }

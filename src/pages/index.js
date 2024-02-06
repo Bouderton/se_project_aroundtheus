@@ -86,10 +86,13 @@ function handleProfileEditSubmit(data) {
     .updateUserInfo(data)
     .then((result) => {
       profileUserInfo.setUserInfo(data);
-      profileEditForm.setLoading(false);
+      profileEditForm.close();
     })
     .catch((err) => {
       alert(`${err} Failed to change user info.`);
+    })
+    .finally(() => {
+      profileEditForm.setLoading(false);
     });
 }
 
@@ -99,11 +102,13 @@ function handleCardSubmit({ title: name, subtitle: link }) {
     .addCard({ name, link })
     .then((card) => {
       newCardSection.addItem({ name, link });
-      addImageForm.setLoading(false);
       addImageForm.close();
     })
     .catch((err) => {
       alert(`${err} Failed to add card.`);
+    })
+    .finally(() => {
+      addImageForm.setLoading(false);
     });
 }
 
@@ -142,6 +147,20 @@ function handleAddLike(card) {
   }
 }
 
+function handleDeleteClick(card) {
+  confirmDeletePopup.open();
+  confirmDeletePopup.setSubmitAction(() => {
+    api
+      .deleteCard(card._id)
+      .then((result) => {
+        card.handleDeleteCard(result);
+        confirmDeletePopup.close();
+      })
+      .catch((err) => {
+        alert(`${err} Failed to delete post.`);
+      });
+  });
+}
 // FUNCTIONS
 
 function handleImageClick(card) {
@@ -157,20 +176,6 @@ function createCard(cardData) {
     handleAddLike
   );
   return card.getView();
-}
-
-function handleDeleteClick(card) {
-  confirmDeletePopup.open();
-  confirmDeletePopup.setSubmitAction(() => {
-    api
-      .deleteCard(card._id)
-      .then((result) => {
-        card.handleDeleteCard(result);
-      })
-      .catch((err) => {
-        alert(`${err} Failed to delete post.`);
-      });
-  });
 }
 
 // EVENT LISTENERS
@@ -252,4 +257,4 @@ const newCardSection = new Section(
 );
 
 /* To-Do List:
-- SUBMIT AND PRAY LOL */
+- FIX CORRECTIONS & SUBMIT */
