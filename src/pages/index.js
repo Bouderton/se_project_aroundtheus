@@ -152,8 +152,8 @@ function handleAddLike(card) {
 
 function handleDeleteClick(card) {
   confirmDeletePopup.open();
-  confirmDeletePopup.setLoading(true);
   confirmDeletePopup.setSubmitAction(() => {
+    confirmDeletePopup.setDeleteLoading(true);
     api
       .deleteCard(card._id)
       .then((result) => {
@@ -164,7 +164,7 @@ function handleDeleteClick(card) {
         alert(`${err} Failed to delete post.`);
       })
       .finally(() => {
-        confirmDeletePopup.setLoading(false);
+        confirmDeletePopup.setDeleteLoading(false);
       });
   });
 }
