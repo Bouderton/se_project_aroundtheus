@@ -118,10 +118,13 @@ function handleAvatarSubmit(input) {
     .changeAvatar(input.link)
     .then((result) => {
       profileUserInfo.setUserAvatar(result.avatar);
-      avatarEditForm.setLoading(false);
+      avatarEditForm.close();
     })
     .catch((err) => {
       alert(`${err} Failed to change avatar.`);
+    })
+    .finally(() => {
+      avatarEditForm.setLoading(false);
     });
 }
 
@@ -149,6 +152,7 @@ function handleAddLike(card) {
 
 function handleDeleteClick(card) {
   confirmDeletePopup.open();
+  confirmDeletePopup.setLoading(true);
   confirmDeletePopup.setSubmitAction(() => {
     api
       .deleteCard(card._id)
@@ -158,6 +162,9 @@ function handleDeleteClick(card) {
       })
       .catch((err) => {
         alert(`${err} Failed to delete post.`);
+      })
+      .finally(() => {
+        confirmDeletePopup.setLoading(false);
       });
   });
 }
