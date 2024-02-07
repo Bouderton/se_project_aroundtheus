@@ -9,7 +9,6 @@ https://bouderton.github.io/se_project_aroundtheus/
 - Intro
 - Features
 - Figma
-- Images
 
 
 **Intro**
