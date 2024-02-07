@@ -19,7 +19,6 @@ export default class PopupWithForm extends Popup {
     return inputValues;
   }
 
-  // Maybe this works???
   setLoading(loading) {
     if (loading) {
       this._submitBtn.textContent = "Saving...";
