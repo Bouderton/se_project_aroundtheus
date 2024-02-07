@@ -29,19 +29,28 @@
         <!-- PROFILE SECTION-->
 
         <section class="profile">
-          <img
-            class="profile__image"
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="Profile Photo"
-          />
+          <div class="profile__image-container">
+            <img
+              class="profile__image"
+              src=""
+              alt="Profile Image"
+              id="profile-avatar-image"
+            />
+            <img
+              class="profile__pencil"
+              src="<%=require('./images/pencil-vector.svg')%>"
+              alt="Profile Pencil Logo"
+              id="profile-pencil"
+            />
+          </div>
           <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
+            <h1 class="profile__title"></h1>
             <button
               class="profile__edit-button"
               id="profile-edit-button"
               type="button"
             ></button>
-            <p class="profile__subtitle">Explorer</p>
+            <p class="profile__subtitle"></p>
           </div>
           <button
             class="profile__add-button"
@@ -146,6 +155,50 @@
               type="submit"
               id="card-save-button"
               disabled
+            >
+              Save
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+    <!--DELETE CONFIRM MODAL-->
+
+    <div class="modal" id="delete-popup">
+      <div class="modal__container">
+        <button
+          class="modal__close-button"
+          id="add-card-close-button"
+          type="button"
+        ></button>
+        <form class="modal__form" id="confirm-form">
+          <p class="modal__yes-heading">Are you sure?</p>
+          <button class="modal__save-button" id="confirm-button">Yes</button>
+        </form>
+      </div>
+    </div>
+
+    <!--PROFILE PICTURE EDIT MODAL-->
+
+    <div class="modal" id="profile-image-modal">
+      <div class="modal__container">
+        <button class="modal__close-button"></button>
+        <p class="modal__heading">Change profile picture</p>
+        <form class="modal__form" id="image-edit-form">
+          <fieldset class="modal__form-fieldset">
+            <input
+              type="url"
+              name="link"
+              class="modal__form-input"
+              placeholder="Image URL"
+              required
+              id="modal-url-input"
+            />
+            <span class="modal__error" id="modal-url-input-error"></span>
+            <button
+              type="submit"
+              class="modal__save-button modal__save-button_disabled"
             >
               Save
             </button>

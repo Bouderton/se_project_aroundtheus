@@ -4,6 +4,11 @@ export default class Section {
     this._renderer = renderer;
     this._container = cssSelector;
   }
+
+  setItems(items) {
+    this._items = items;
+  }
+
   renderItems() {
     this._items.forEach((data) => {
       this.addItem(data);

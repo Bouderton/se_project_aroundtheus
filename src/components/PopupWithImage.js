@@ -14,4 +14,3 @@ export default class PopWithImage extends Popup {
     super.open();
   }
 }
-// DO THIS ^^^^
